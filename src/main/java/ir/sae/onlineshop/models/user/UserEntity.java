@@ -2,54 +2,55 @@ package ir.sae.onlineshop.models.user;
 
 
 import ir.sae.onlineshop.models.Audit;
+import ir.sae.onlineshop.models.order.OrderEntity;
 
 import javax.persistence.*;
-import javax.validation.constraints.Email;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
-import java.io.Serializable;
 import java.util.Date;
 
 @Entity
-@Table(name = "User")
-public class UserEntity extends Audit implements Serializable {
+@Table(name = "user")
+public class UserEntity extends Audit {
 
     @Id
+    @Column(nullable = false , updatable = false)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @NotNull(message = "Name cannot be null")
-    @Size(max = 20)
+
+
+
     @Column(name = "fName")
     private String firstName;
 
-    @NotNull(message = "lastName cannot be null")
-    @Size(max = 20)
+
+
     @Column(name = "lName")
     private String lastName;
-    @NotNull(message = "nationalCode cannot be null")
-    @Size(min = 3, max = 10)
+
+
+
     @Column(name = "nCode")
     private String nationalCode;
-    @NotNull(message = "birthdate cannot be null")
+
+
     @Column(name = "birthDate")
     private Date birthDate;
 
 
-    @Email(message = "Email should be valid")
     @Column(name = "email")
     private String email;
 
-    @NotNull(message = "phoneNumber cannot be null")
-    @Size(max = 8)
+
+
     @Column(name = "phoneNumber")
     private String phoneNumber;
 
     @Column(name ="status", nullable = false)
+    @Enumerated(EnumType.STRING)
     private UserStatus status;
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long customerId;
+
+    @OneToOne(mappedBy = "userEntity")
+    private OrderEntity orderEntity;
 
 
     public Long getId() {
@@ -117,10 +118,10 @@ public class UserEntity extends Audit implements Serializable {
     }
 
     public Long getCustomerId() {
-        return customerId;
+        return id;
     }
 
     public void setCustomerId(Long customerId) {
-        this.customerId = customerId;
+        this.id = customerId;
     }
 }

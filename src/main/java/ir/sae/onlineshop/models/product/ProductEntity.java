@@ -1,47 +1,68 @@
 package ir.sae.onlineshop.models.product;
 
 
-import com.sun.istack.internal.NotNull;
+
 import ir.sae.onlineshop.models.Audit;
+
+import ir.sae.onlineshop.models.image.FileDB;
+import ir.sae.onlineshop.models.orderItem.OrderItemEntity;
 import org.hibernate.validator.constraints.Range;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.persistence.*;
 import java.io.Serializable;
 import java.math.BigDecimal;
+import java.util.List;
 
 @Entity
-@Table(name = "Product")
-public class ProductEntity extends Audit implements Serializable {
+@Table(name = "product")
+public class ProductEntity extends Audit {
 
 
     @Id
-    @Column(name = "product_id")
+    @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long productId;
-    @Column(name = "productName")
+    private Long id;
+    @Column(name = "product_name")
     private String productName;
 
-    @NotNull
+
+
     @Range(min = 0)
     @Column(name = "price")
-    private BigDecimal productPrice;
+    private Double productPrice;
 
-    @NotNull
+
     @Range(min = 0)
-    @Column(name ="number")
-    private Double unitInStock;
+    @Column(name = "number")
+    private Integer unitInStock;
+
+    @OneToMany(mappedBy = "productEntity")
+    List<OrderItemEntity> orderItemEntityList;
+
+    @OneToOne(cascade ={CascadeType.REFRESH,CascadeType.MERGE})
+    @JoinColumn(name ="file",referencedColumnName ="id")
+    FileDB file;
 
 
-    @Transient
-    private MultipartFile productImage;
+    public FileDB getFile() {
+        return file;
+    }
+
+    public void setFile(FileDB file) {
+        this.file = file;
+    }
+
+    public ProductEntity(Long id) {
+        this.id = id;
+    }
 
     public Long getId() {
-        return productId;
+        return id;
     }
 
     public void setId(Long id) {
-        this.productId = id;
+        this.id = id;
     }
 
     public String getProductName() {
@@ -52,35 +73,49 @@ public class ProductEntity extends Audit implements Serializable {
         this.productName = productName;
     }
 
-    public BigDecimal getProductPrice() {
+
+
+    public Double getProductPrice() {
         return productPrice;
     }
 
-    public void setProductPrice(BigDecimal productPrice) {
+    public void setProductPrice(Double productPrice) {
         this.productPrice = productPrice;
     }
 
-    public Long getProductId() {
-        return productId;
-    }
-
-    public void setProductId(Long productId) {
-        this.productId = productId;
-    }
-
-    public Double getUnitInStock() {
+    public Integer getUnitInStock() {
         return unitInStock;
     }
 
-    public void setUnitInStock(Double unitInStock) {
+    public void setUnitInStock(Integer unitInStock) {
         this.unitInStock = unitInStock;
     }
 
-    public MultipartFile getProductImage() {
-        return productImage;
+    public List<OrderItemEntity> getOrderItemEntityList() {
+        return orderItemEntityList;
     }
 
-    public void setProductImage(MultipartFile productImage) {
-        this.productImage = productImage;
+    public void setOrderItemEntityList(List<OrderItemEntity> orderItemEntityList) {
+        this.orderItemEntityList = orderItemEntityList;
     }
+
+
+    public ProductEntity() {
+    }
+
+    public ProductEntity(Long id, String productName, Double productPrice, Integer unitInStock, List<OrderItemEntity> orderItemEntityList) {
+        this.id = id;
+        this.productName = productName;
+        this.productPrice = productPrice;
+        this.unitInStock = unitInStock;
+        this.orderItemEntityList = orderItemEntityList;
+    }
+
+    public ProductEntity(String productName, Double productPrice, Integer unitInStock, List<OrderItemEntity> orderItemEntityList) {
+        this.productName = productName;
+        this.productPrice = productPrice;
+        this.unitInStock = unitInStock;
+        this.orderItemEntityList = orderItemEntityList;
+    }
+
 }

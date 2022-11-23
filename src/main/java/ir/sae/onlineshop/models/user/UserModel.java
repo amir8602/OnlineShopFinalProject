@@ -1,61 +1,34 @@
 package ir.sae.onlineshop.models.user;
 
 
-import ir.sae.onlineshop.models.Audit;
-import ir.sae.onlineshop.models.order.OrderEntity;
+import ir.sae.onlineshop.models.order.OrderModel;
 
-import javax.persistence.*;
-import javax.validation.constraints.Size;
-import java.io.Serializable;
 import java.util.Date;
 
-@Entity
-@Table(name = "User")
-public class UserEntity extends Audit implements Serializable {
+public class UserModel  {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+
     private Long id;
 
-//    @Size(max = 20)
-    @Column(name = "fName")
+
     private String firstName;
 
 
-//    @Size(max = 20)
-    @Column(name = "lName")
     private String lastName;
 
-//    @Size(min = 3, max = 10)
-    @Column(name = "nCode")
+
     private String nationalCode;
 
-    @Column(name = "birthDate")
     private Date birthDate;
 
-
-//    @Email(message = "Email should be valid")
-    @Column(name = "email")
     private String email;
 
-
-   @Size(max = 8)
-    @Column(name = "phoneNumber")
     private String phoneNumber;
 
-    @Column(name ="status", nullable = false)
+    private OrderModel orderModel;
+
     private UserStatus status;
 
-    @OneToOne(mappedBy = "userEntity")
-    private OrderEntity orderEntity;
-
-    public UserEntity(Long id) {
-        this.id = id;
-    }
-
-    public UserEntity() {
-
-    }
 
     public Long getId() {
         return id;
@@ -121,12 +94,38 @@ public class UserEntity extends Audit implements Serializable {
         this.status = status;
     }
 
-
-    public OrderEntity getOrderEntity() {
-        return orderEntity;
+    public OrderModel getOrderModel() {
+        return orderModel;
     }
 
-    public void setOrderEntity(OrderEntity orderEntity) {
-        this.orderEntity = orderEntity;
+    public void setOrderModel(OrderModel orderModel) {
+        this.orderModel = orderModel;
+    }
+
+    public UserModel(Long id, String firstName, String lastName, String nationalCode, Date birthDate, String email, String phoneNumber, OrderModel orderModel, UserStatus status) {
+        this.id = id;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.nationalCode = nationalCode;
+        this.birthDate = birthDate;
+        this.email = email;
+        this.phoneNumber = phoneNumber;
+        this.orderModel = orderModel;
+        this.status = status;
+    }
+
+    public UserModel() {
+    }
+
+
+    public UserModel(String firstName, String lastName, String nationalCode, Date birthDate, String email, String phoneNumber, OrderModel orderModel, UserStatus status) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.nationalCode = nationalCode;
+        this.birthDate = birthDate;
+        this.email = email;
+        this.phoneNumber = phoneNumber;
+        this.orderModel = orderModel;
+        this.status = status;
     }
 }

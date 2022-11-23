@@ -2,6 +2,7 @@ package ir.sae.onlineshop.models.product;
 
 
 import ir.sae.onlineshop.models.Audit;
+import ir.sae.onlineshop.models.image.FileDB;
 import ir.sae.onlineshop.models.orderItem.OrderItemEntity;
 
 import javax.persistence.*;
@@ -32,8 +33,10 @@ public class ProductEntity extends Audit{
     @OneToMany(mappedBy = "productEntity")
     List<OrderItemEntity> orderItemEntityList;
 
-    @Column(name = "image_path")
-    private String imagePath;
+
+    @OneToOne(cascade = {CascadeType.REFRESH , CascadeType.MERGE})
+    @JoinColumn(name = "file" , referencedColumnName = "id" )
+    private FileDB file;
 
 
     public Long getId() {
@@ -76,23 +79,19 @@ public class ProductEntity extends Audit{
         this.orderItemEntityList = orderItemEntityList;
     }
 
-    public String getImagePath() {
-        return imagePath;
+
+    public FileDB getFile() {
+        return file;
     }
 
-    public void setImagePath(String imagePath) {
-        this.imagePath = imagePath;
-    }
-
-    public ProductEntity(Long id, String productName, BigDecimal productPrice, Integer unitInStock, List<OrderItemEntity> orderItemEntityList, String imagePath) {
-        this.id = id;
-        this.productName = productName;
-        this.productPrice = productPrice;
-        this.unitInStock = unitInStock;
-        this.orderItemEntityList = orderItemEntityList;
-        this.imagePath = imagePath;
+    public void setFile(FileDB file) {
+        this.file = file;
     }
 
     public ProductEntity() {
+    }
+
+    public ProductEntity(Long id) {
+        this.id = id;
     }
 }

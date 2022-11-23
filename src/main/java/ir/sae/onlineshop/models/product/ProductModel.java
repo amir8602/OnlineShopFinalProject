@@ -6,7 +6,7 @@ import java.math.BigDecimal;
 import java.util.List;
 
 
-public class ProductModel  {
+public class ProductModel {
 
 
 
@@ -20,31 +20,50 @@ public class ProductModel  {
 
     List<OrderItemEntity> orderItemEntityList;
 
-    private String imagePath;
+    private Long fileId;
+
+    //find by id ----> imageEntity
+    //product model --->  productEntity.setImage(imageEntity);
 
 
-    public ProductModel(Long id, String productName, BigDecimal productPrice, Integer unitInStock, List<OrderItemEntity> orderItemEntityList, String imagePath) {
-        this.id = id;
-        this.productName = productName;
-        this.productPrice = productPrice;
-        this.unitInStock = unitInStock;
-        this.orderItemEntityList = orderItemEntityList;
-        this.imagePath = imagePath;
-    }
+//    public ProductModel(Long id, String productName, BigDecimal productPrice, Integer unitInStock, List<OrderItemEntity> orderItemEntityList, Long imageId) {
+//        this.id = id;
+//        this.productName = productName;
+//        this.productPrice = productPrice;
+//        this.unitInStock = unitInStock;
+//        this.orderItemEntityList = orderItemEntityList;
+//        this.imageId = imageId;
+//    }
 
     public ProductModel(Long id) {
         this.id = id;
     }
 
-    public ProductModel(String productName, BigDecimal productPrice, Integer unitInStock, List<OrderItemEntity> orderItemEntityList, String imagePath) {
+//    public ProductModel(String productName, BigDecimal productPrice, Integer unitInStock, List<OrderItemEntity> orderItemEntityList, Long imageId) {
+//        this.productName = productName;
+//        this.productPrice = productPrice;
+//        this.unitInStock = unitInStock;
+//        this.orderItemEntityList = orderItemEntityList;
+//        this.imageId = imageId;
+//    }
+
+    //    public ProductModel(String productName, BigDecimal productPrice, Integer unitInStock, List<OrderItemEntity> orderItemEntityList, ImageEntity imageEntity) {
+//        this.productName = productName;
+//        this.productPrice = productPrice;
+//        this.unitInStock = unitInStock;
+//        this.orderItemEntityList = orderItemEntityList;
+//        this.imageEntity = imageEntity;
+//    }
+
+    public ProductModel() {
+    }
+
+    public ProductModel(String productName, BigDecimal productPrice, Integer unitInStock, List<OrderItemEntity> orderItemEntityList, Long fileId) {
         this.productName = productName;
         this.productPrice = productPrice;
         this.unitInStock = unitInStock;
         this.orderItemEntityList = orderItemEntityList;
-        this.imagePath = imagePath;
-    }
-
-    public ProductModel() {
+        this.fileId = fileId;
     }
 
     public Long getId() {
@@ -87,11 +106,27 @@ public class ProductModel  {
         this.orderItemEntityList = orderItemEntityList;
     }
 
-    public String getImagePath() {
-        return imagePath;
+    public Long getFileId() {
+        return fileId;
     }
 
-    public void setImagePath(String imagePath) {
-        this.imagePath = imagePath;
+    public void setFileId(Long fileId) {
+        this.fileId = fileId;
     }
+
+    //    public Long getImageId() {
+//        return imageId;
+//    }
+//
+//    public void setImageId(Long imageId) {
+//        this.imageId = imageId;
+//    }
+
+    //    public ImageEntity getImageEntity() {
+//        return imageEntity;
+//    }
+//
+//    public void setImageEntity(ImageEntity imageEntity) {
+//        this.imageEntity = imageEntity;
+//    }
 }

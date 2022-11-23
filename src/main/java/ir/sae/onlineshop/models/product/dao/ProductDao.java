@@ -1,6 +1,7 @@
 package ir.sae.onlineshop.models.product.dao;
 
 import ir.sae.onlineshop.models.product.ProductEntity;
+import org.springframework.data.domain.Example;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
@@ -16,4 +17,10 @@ public interface ProductDao extends JpaRepository<ProductEntity, Long> {
 
 
     List<ProductEntity> findAll();
+
+
+    void deleteById(Long aLong);
+
+
+    <S extends ProductEntity> List<S> findAll(Example<S> example);
 }

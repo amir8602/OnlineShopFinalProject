@@ -29,6 +29,8 @@ public class UserModel  {
 
     private UserStatus status;
 
+    private String username;
+
 
     public Long getId() {
         return id;
@@ -102,7 +104,7 @@ public class UserModel  {
         this.orderModel = orderModel;
     }
 
-    public UserModel(Long id, String firstName, String lastName, String nationalCode, Date birthDate, String email, String phoneNumber, OrderModel orderModel, UserStatus status) {
+    public UserModel(Long id, String firstName, String lastName, String nationalCode, Date birthDate, String email, String phoneNumber, OrderModel orderModel, UserStatus status, String username) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -112,13 +114,14 @@ public class UserModel  {
         this.phoneNumber = phoneNumber;
         this.orderModel = orderModel;
         this.status = status;
+        this.username = username;
     }
 
     public UserModel() {
     }
 
 
-    public UserModel(String firstName, String lastName, String nationalCode, Date birthDate, String email, String phoneNumber, OrderModel orderModel, UserStatus status) {
+    public UserModel(String firstName, String lastName, String nationalCode, Date birthDate, String email, String phoneNumber, OrderModel orderModel, UserStatus status, String username) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.nationalCode = nationalCode;
@@ -127,5 +130,18 @@ public class UserModel  {
         this.phoneNumber = phoneNumber;
         this.orderModel = orderModel;
         this.status = status;
+        this.username = username;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public UserModel(String username) {
+        this.username = username;
     }
 }

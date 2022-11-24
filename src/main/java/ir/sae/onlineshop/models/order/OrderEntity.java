@@ -35,6 +35,9 @@ public class OrderEntity extends Audit  {
     @Enumerated(EnumType.STRING)
     private OrderStatus orderStatus;
 
+    public OrderEntity(Long id) {
+        this.id = id;
+    }
 
     public OrderEntity(Long id, double grandTotal, UserEntity userEntity, List<OrderItemEntity> orderItemEntities, OrderStatus orderStatus) {
         this.id = id;

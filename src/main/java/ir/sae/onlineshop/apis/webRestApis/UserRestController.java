@@ -72,4 +72,14 @@ public class UserRestController {
         }
         return "user remove Successfully!";
     }
+
+    @GetMapping("/get-user-by-username/{username}")
+    public UserModel getUserByUsername(@PathVariable("username") String username){
+        UserEntity userEntity = new UserEntity();
+        userEntity.setUsername(username);
+        UserEntity find=userService.getByUsername(userEntity);
+        UserModel userModel = userMapper.entityToModelConvertor(find);
+        return userModel;
+    }
+
 }

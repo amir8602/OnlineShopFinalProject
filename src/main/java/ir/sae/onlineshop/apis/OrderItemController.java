@@ -32,9 +32,9 @@ public class OrderItemController {
     @PostMapping
     @PreAuthorize("hasRole('ADMIN') or hasRole('USER')")
     public OrderItemDto saveOrderItem(@RequestBody OrderItemDto orderItemDto) {
-        OrderItemEntity orderItemEntity = orderItemMapper.modelToEntityConvertor(orderItemDto);
+        OrderItemEntity orderItemEntity = orderItemMapper.dtoToEntityConvertor(orderItemDto);
         OrderItemEntity saveOrderItemEntity = orderItemService.saveOrderItem(orderItemEntity);
-        OrderItemDto saveOrderItemDto = orderItemMapper.entityToModelConvertor(saveOrderItemEntity);
+        OrderItemDto saveOrderItemDto = orderItemMapper.entityToDtoConvertor(saveOrderItemEntity);
         return saveOrderItemDto;
     }
 
@@ -43,7 +43,7 @@ public class OrderItemController {
     public OrderItemDto getOrderItemById(@PathVariable("id") Long id) {
         OrderItemEntity orderItemEntity = new OrderItemEntity(id);
         OrderItemEntity orderItemById = orderItemService.getOrderItemById(orderItemEntity);
-         OrderItemDto getOrderItemDto = orderItemMapper.entityToModelConvertor(orderItemById);
+         OrderItemDto getOrderItemDto = orderItemMapper.entityToDtoConvertor(orderItemById);
         return getOrderItemDto;
     }
 
@@ -51,7 +51,7 @@ public class OrderItemController {
     @PreAuthorize("hasRole('ADMIN') or hasRole('USER')")
     public List<OrderItemDto> getAllOrderItem() {
         List<OrderItemEntity> getAllOrderItem = orderItemService.getAll();
-        List<OrderItemDto> getAllOrderItemDtos = orderItemMapper.entityToModelConvertor(getAllOrderItem);
+        List<OrderItemDto> getAllOrderItemDtos = orderItemMapper.entityToDtoConvertor(getAllOrderItem);
         return getAllOrderItemDtos;
 
     }
@@ -59,9 +59,9 @@ public class OrderItemController {
     @PutMapping
     @PreAuthorize("hasRole('ADMIN') or hasRole('USER')")
     public OrderItemDto updateOrderItem(@RequestBody OrderItemDto orderItemDto) {
-        OrderItemEntity orderItemEntity = orderItemMapper.modelToEntityConvertor(orderItemDto);
+        OrderItemEntity orderItemEntity = orderItemMapper.dtoToEntityConvertor(orderItemDto);
         OrderItemEntity updateOrderItemEntity = orderItemService.updateOrderItem(orderItemEntity);
-        OrderItemDto updateOrderItemDto = orderItemMapper.entityToModelConvertor(updateOrderItemEntity);
+        OrderItemDto updateOrderItemDto = orderItemMapper.entityToDtoConvertor(updateOrderItemEntity);
         return updateOrderItemDto;
     }
 
@@ -83,7 +83,7 @@ public class OrderItemController {
     @PreAuthorize("hasRole('ADMIN') or hasRole('USER')")
     public String deleteAllOrderItem(@RequestBody OrderItemDto orderItemDto) {
 
-        OrderItemEntity orderItemEntity = orderItemMapper.modelToEntityConvertor(orderItemDto);
+        OrderItemEntity orderItemEntity = orderItemMapper.dtoToEntityConvertor(orderItemDto);
         try {
             orderItemService.deleteAllOrderItem(orderItemEntity);
         } catch (Exception e) {

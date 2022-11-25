@@ -4,13 +4,13 @@ import java.util.List;
 
 public interface BaseMapper< T extends BaseEntity , E extends BaseDto> {
 
-    E entityToModelConvertor(T t);
+    E entityToDtoConvertor(T t);
 
-    T modelToEntityConvertor(E e);
+    T dtoToEntityConvertor(E e);
 
-    List<E> entityToModelConvertor(List<T> t);
+    List<E> entityToDtoConvertor(List<T> t);
 
-    List<T> modelToEntityConvertor(List<E> e);
+    List<T> dtoToEntityConvertor(List<E> e);
 
 
 }

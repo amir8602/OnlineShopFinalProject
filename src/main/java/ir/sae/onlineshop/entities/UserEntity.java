@@ -63,13 +63,17 @@ public class UserEntity extends BaseEntity {
     @Size(min =4, max = 12 , message = "user.user.name.invalid.size")
     private String username;
 
+
     public UserEntity(Long id) {
         this.id = id;
     }
 
+
     public UserEntity() {
 
     }
+
+
 
     public Long getId() {
         return id;
@@ -154,5 +158,34 @@ public class UserEntity extends BaseEntity {
 
     public void setUsername(String username) {
         this.username = username;
+    }
+
+    public UserEntity(Long id, String firstName, String lastName, String nationalCode, Date birthDate, String email, String phoneNumber, UserStatus status, OrderEntity order, String username) {
+        this.id = id;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.nationalCode = nationalCode;
+        this.birthDate = birthDate;
+        this.email = email;
+        this.phoneNumber = phoneNumber;
+        this.status = status;
+        this.order = order;
+        this.username = username;
+    }
+
+    @Override
+    public String toString() {
+        return "UserEntity{" +
+                "id=" + id +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", nationalCode='" + nationalCode + '\'' +
+                ", birthDate=" + birthDate +
+                ", email='" + email + '\'' +
+                ", phoneNumber='" + phoneNumber + '\'' +
+                ", status=" + status +
+                ", order=" + order +
+                ", username='" + username + '\'' +
+                '}';
     }
 }

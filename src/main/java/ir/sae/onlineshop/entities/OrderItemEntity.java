@@ -29,11 +29,9 @@ public class OrderItemEntity extends BaseEntity {
 
 
     @ManyToOne
-    @JoinColumn(name = "PRODUCT" , referencedColumnName = "id")
     private ProductEntity product;
 
     @ManyToOne
-    @JoinColumn(name = "ORDER" ,referencedColumnName = "id")
     private OrderEntity order;
 
 

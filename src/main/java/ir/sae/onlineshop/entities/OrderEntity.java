@@ -23,7 +23,6 @@ public class OrderEntity extends BaseEntity {
 
 
     @OneToOne
-    @JoinColumn(name = "USER" , referencedColumnName = "id")
     private UserEntity user;
 
 

@@ -1,6 +1,6 @@
 package ir.sae.onlineshop.services;
 
-import ir.sae.onlineshop.models.user.UserEntity;
+import ir.sae.onlineshop.entities.UserEntity;
 
 import java.util.List;
 

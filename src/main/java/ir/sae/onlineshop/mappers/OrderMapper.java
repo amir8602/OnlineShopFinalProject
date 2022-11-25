@@ -1,20 +1,12 @@
 package ir.sae.onlineshop.mappers;
 
-import ir.sae.onlineshop.models.order.OrderEntity;
-import ir.sae.onlineshop.models.order.OrderModel;
+import ir.sae.onlineshop.base.BaseMapper;
+import ir.sae.onlineshop.dto.OrderDto;
+import ir.sae.onlineshop.entities.OrderEntity;
 import org.mapstruct.Mapper;
 
-import java.util.List;
-
 @Mapper(componentModel = "spring")
-public interface OrderMapper {
+public interface OrderMapper extends BaseMapper<OrderEntity , OrderDto> {
 
-    OrderModel entityToModelConvertor(OrderEntity orderEntity);
-
-    OrderEntity modelToEntityConvertor(OrderModel orderModel);
-
-    List<OrderModel> entityToModelConvertor(List<OrderEntity> orderEntities);
-
-    List<OrderEntity> modelToEntityConvertor(List<OrderModel> orderModels);
 
 }

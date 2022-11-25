@@ -1,21 +1,11 @@
 package ir.sae.onlineshop.mappers;
 
-import ir.sae.onlineshop.models.user.UserEntity;
-import ir.sae.onlineshop.models.user.UserModel;
+import ir.sae.onlineshop.base.BaseMapper;
+import ir.sae.onlineshop.dto.UserDto;
+import ir.sae.onlineshop.entities.UserEntity;
 import org.mapstruct.Mapper;
 
-import java.util.List;
-
 @Mapper(componentModel = "spring")
-public interface UserMapper {
+public interface UserMapper extends BaseMapper<UserEntity , UserDto> {
 
-
-
-    UserModel entityToModelConvertor(UserEntity userEntity);
-
-    UserEntity modelToEntityConvertor(UserModel userModel);
-
-    List<UserModel> entityToModelConvertor(List<UserEntity> userEntity);
-
-    List<UserEntity> modelToEntityConvertor(List<UserModel> userModels);
 }

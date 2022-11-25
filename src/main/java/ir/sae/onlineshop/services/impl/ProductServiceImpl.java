@@ -1,7 +1,7 @@
 package ir.sae.onlineshop.services.impl;
 
-import ir.sae.onlineshop.models.product.ProductEntity;
-import ir.sae.onlineshop.models.product.dao.ProductDao;
+import ir.sae.onlineshop.entities.ProductEntity;
+import ir.sae.onlineshop.repositories.ProductRepository;
 import ir.sae.onlineshop.services.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Example;
@@ -13,34 +13,34 @@ import java.util.List;
 public class ProductServiceImpl implements ProductService {
 
     @Autowired
-    private ProductDao productDao;
+    private ProductRepository productRepository;
     @Override
     public ProductEntity saveProduct(ProductEntity productEntity) {
-        return productDao.save(productEntity);
+        return productRepository.save(productEntity);
     }
 
     @Override
     public ProductEntity getById(ProductEntity productEntity) {
-        return productDao.getById(productEntity.getId());
+        return productRepository.getById(productEntity.getId());
     }
 
     @Override
     public List<ProductEntity> getAll() {
-        return productDao.findAll();
+        return productRepository.findAll();
     }
 
     @Override
     public ProductEntity update(ProductEntity productEntity) {
-        return productDao.save(productEntity);
+        return productRepository.save(productEntity);
     }
 
     @Override
     public void delete(ProductEntity productEntity) {
-        productDao.deleteById(productEntity.getId());
+        productRepository.deleteById(productEntity.getId());
     }
 
     @Override
     public List<ProductEntity> searchByExample(Example<ProductEntity> of) {
-        return productDao.findAll(of);
+        return productRepository.findAll(of);
     }
 }

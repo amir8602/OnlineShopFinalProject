@@ -1,7 +1,7 @@
 package ir.sae.onlineshop.services;
 
-import ir.sae.onlineshop.models.order.OrderEntity;
-import ir.sae.onlineshop.models.orderItem.OrderItemEntity;
+import ir.sae.onlineshop.entities.OrderEntity;
+import ir.sae.onlineshop.entities.OrderItemEntity;
 
 import java.util.List;
 

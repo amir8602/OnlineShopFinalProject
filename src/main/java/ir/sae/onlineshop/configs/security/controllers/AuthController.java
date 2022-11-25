@@ -9,7 +9,7 @@ import ir.sae.onlineshop.configs.security.payload.request.SignupRequest;
 import ir.sae.onlineshop.configs.security.payload.response.JwtResponse;
 import ir.sae.onlineshop.configs.security.payload.response.MessageResponse;
 import ir.sae.onlineshop.configs.security.repository.RoleRepository;
-import ir.sae.onlineshop.configs.security.repository.UserRepository;
+import ir.sae.onlineshop.configs.security.repository.UsersRepository;
 import ir.sae.onlineshop.configs.security.security.jwt.JwtUtils;
 import ir.sae.onlineshop.configs.security.security.services.UserDetailsImpl;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,7 +36,7 @@ public class AuthController {
     AuthenticationManager authenticationManager;
 
     @Autowired
-    UserRepository userRepository;
+    UsersRepository usersRepository;
 
     @Autowired
     RoleRepository roleRepository;
@@ -63,11 +63,11 @@ public class AuthController {
 
     @PostMapping("/signup")
     public ResponseEntity<?> registerUser(@Valid @RequestBody SignupRequest signUpRequest) {
-        if (userRepository.existsByUsername(signUpRequest.getUsername())) {
+        if (usersRepository.existsByUsername(signUpRequest.getUsername())) {
             return ResponseEntity.badRequest().body(new MessageResponse("Error: Username is already taken!"));
         }
 
-        if (userRepository.existsByEmail(signUpRequest.getEmail())) {
+        if (usersRepository.existsByEmail(signUpRequest.getEmail())) {
             return ResponseEntity.badRequest().body(new MessageResponse("Error: Email is already in use!"));
         }
 
@@ -96,7 +96,7 @@ public class AuthController {
         }
 
         users.setRoles(roles);
-        userRepository.save(users);
+        usersRepository.save(users);
 
         return ResponseEntity.ok(new MessageResponse("User registered successfully!"));
     }

@@ -5,6 +5,7 @@ import ir.sae.onlineshop.entities.UserEntity;
 import ir.sae.onlineshop.repositories.UserRepository;
 import ir.sae.onlineshop.services.impl.UserServiceImpl;
 import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -52,16 +53,18 @@ class BaseServiceImplTest {
 
     }
 
-//    @Test
-//    void getById() {
-//
-//        UserEntity userEntity = new UserEntity();
-//        userEntity.setId(1L);
-//        UserEntity save = userService.save(userEntity);
-//        userService.getById(1L);
-//
-//
-//    }
+    @Test
+    void getById() {
+
+        UserEntity userEntity = new UserEntity();
+        UserEntity save = userService.saveUser(userEntity);
+        UserEntity userById = userService.getUserById(save);
+        Assertions.assertNotNull(userById.getId());
+    }
+    @Test
+    void getById2() {
+        Assertions.assertThrows(NullPointerException.class,() -> userService.getUserById(null));
+  }
 
     @Test
     void getAll() {

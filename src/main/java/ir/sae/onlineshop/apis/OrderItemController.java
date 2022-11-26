@@ -5,8 +5,9 @@ package ir.sae.onlineshop.apis;
 import ir.sae.onlineshop.base.BaseController;
 import ir.sae.onlineshop.dto.OrderDto;
 import ir.sae.onlineshop.dto.OrderItemDto;
-import ir.sae.onlineshop.entities.OrderItemEntity;
 import ir.sae.onlineshop.mappers.OrderItemMapper;
+import ir.sae.onlineshop.entities.OrderItemEntity;
+import ir.sae.onlineshop.repositories.OrderItemRepository;
 import ir.sae.onlineshop.services.OrderItemService;
 import ir.sae.onlineshop.services.impl.OrderItemServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,8 +17,10 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/orderItems")
-public class OrderItemController extends BaseController<OrderItemDto,OrderItemEntity,
-        OrderItemMapper, OrderItemServiceImpl> {
+public class OrderItemController extends BaseController<OrderItemDto<Long>,Long,OrderItemEntity
+        ,OrderItemMapper<OrderItemEntity,OrderItemDto>,OrderItemServiceImpl<OrderItemRepository<OrderItemEntity,Long>,
+        OrderItemEntity,Long>>
+        {
 
 
 
@@ -29,9 +32,7 @@ public class OrderItemController extends BaseController<OrderItemDto,OrderItemEn
   @Autowired
   OrderItemMapper orderItemMapper;
 
-    public OrderItemController(OrderItemServiceImpl service, OrderItemMapper mapper) {
-        super(service, mapper);
-    }
+
 
 
 //    @PostMapping
@@ -97,11 +98,11 @@ public class OrderItemController extends BaseController<OrderItemDto,OrderItemEn
         return "orderItem remove of order Successfully!";
     }
 
-    @GetMapping("/get-yeksan-nabayad-dashte-bashim")
-    @PreAuthorize("hasRole('ADMIN')")
-    public OrderItemDto findAllOrderItemByOrder(@RequestBody OrderDto orderDto) {
-        return null;
-    }
+//    @GetMapping("/get-yeksan-nabayad-dashte-bashim")
+//    @PreAuthorize("hasRole('ADMIN')")
+//    public OrderItemDto findAllOrderItemByOrder(@RequestBody OrderDto orderDto) {
+//        return null;
+//    }
 
 
 

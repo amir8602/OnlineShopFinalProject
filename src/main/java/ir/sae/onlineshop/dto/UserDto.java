@@ -48,13 +48,13 @@ public class UserDto extends BaseDto<Long> {
 
     private Long version;
 
-//    public OrderDto getOrderDto() {
-//        return orderDto;
-//    }
-//
-//    public void setOrderDto(OrderDto orderDto) {
-//        this.orderDto = orderDto;
-//    }
+    public OrderDto getOrderDto() {
+        return orderDto;
+    }
+
+    public void setOrderDto(OrderDto orderDto) {
+        this.orderDto = orderDto;
+    }
 
     public Long getVersion() {
         return version;

@@ -2,26 +2,22 @@
 
 package ir.sae.onlineshop.apis;
 
-import ir.sae.onlineshop.base.BaseController;
-import ir.sae.onlineshop.dto.OrderDto;
 import ir.sae.onlineshop.dto.OrderItemDto;
-import ir.sae.onlineshop.mappers.OrderItemMapper;
 import ir.sae.onlineshop.entities.OrderItemEntity;
-import ir.sae.onlineshop.repositories.OrderItemRepository;
+import ir.sae.onlineshop.mappers.OrderItemMapper;
 import ir.sae.onlineshop.services.OrderItemService;
-import ir.sae.onlineshop.services.impl.OrderItemServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.access.prepost.PreAuthorize;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 
 @RestController
 @RequestMapping("/orderItems")
-public class OrderItemController extends BaseController<OrderItemDto<Long>,Long,OrderItemEntity
-        ,OrderItemMapper<OrderItemEntity,OrderItemDto>,OrderItemServiceImpl<OrderItemRepository<OrderItemEntity,Long>,
-        OrderItemEntity,Long>>
-        {
-
+public class OrderItemController {
+//    extends BaseController}
+//        <OrderItemDto,Long, OrderItemEntity, OrderItemMapper, OrderItemServiceImpl> {
 
 
   @Autowired
@@ -86,7 +82,7 @@ public class OrderItemController extends BaseController<OrderItemDto<Long>,Long,
 //    }
 
     @DeleteMapping
-    @PreAuthorize("hasRole('ADMIN') or hasRole('USER')")
+//    @PreAuthorize("hasRole('ADMIN') or hasRole('USER')")
     public String deleteAllOrderItem(@RequestBody OrderItemDto orderItemDto) {
 
         OrderItemEntity orderItemEntity = orderItemMapper.dtoToEntityConvertor(orderItemDto);

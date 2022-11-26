@@ -18,7 +18,7 @@ public class OrderDto extends BaseDto<Long> {
     private UserDto userDto;
 
 
-    private List<OrderItemDto<Number>> orderItemDtos;
+    private List<OrderItemDto> orderItemDtos;
 
 
     @NotNull
@@ -31,18 +31,20 @@ public class OrderDto extends BaseDto<Long> {
     }
 
 
-    public OrderDto(Double grandTotal, UserDto userDto, List<OrderItemDto<Number>> orderItemDtos, OrderStatus orderStatus) {
+    public OrderDto(Double grandTotal, UserDto userDto,
+                    List<OrderItemDto> orderItemDtos, OrderStatus orderStatus) {
         this.grandTotal = grandTotal;
         this.userDto = userDto;
         this.orderItemDtos = orderItemDtos;
         this.orderStatus = orderStatus;
     }
 
-    public OrderDto(Long id, Date createDate, Date updateDate, Double grandTotal, UserDto userDto, List<OrderItemDto<Number>> orderItemDtos, OrderStatus orderStatus) {
+    public OrderDto(Long id, Date createDate,
+                    Date updateDate, Double grandTotal, UserDto userDto,
+                    List<OrderItemDto> orderItemDtos, OrderStatus orderStatus) {
         super(id);
         this.grandTotal = grandTotal;
         this.userDto = userDto;
-        this.orderItemDtos = orderItemDtos;
         this.orderStatus = orderStatus;
     }
 
@@ -62,11 +64,11 @@ public class OrderDto extends BaseDto<Long> {
         this.userDto = userDto;
     }
 
-    public List<OrderItemDto<Number>> getOrderItemModels() {
+    public List<OrderItemDto> getOrderItemModels() {
         return orderItemDtos;
     }
 
-    public void setOrderItemModels(List<OrderItemDto<Number>> orderItemDtos) {
+    public void setOrderItemModels(List<OrderItemDto> orderItemDtos) {
         this.orderItemDtos = orderItemDtos;
     }
 

@@ -1,19 +1,17 @@
 package ir.sae.onlineshop.apis;
 
-import ir.sae.onlineshop.base.BaseController;
-import ir.sae.onlineshop.dto.OrderDto;
-import ir.sae.onlineshop.entities.OrderEntity;
 import ir.sae.onlineshop.mappers.OrderMapper;
 import ir.sae.onlineshop.services.OrderService;
-import ir.sae.onlineshop.services.impl.OrderItemServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/order")
-public class OrderRestController extends BaseController<OrderDto,OrderEntity
-        ,OrderMapper, OrderItemServiceImpl> {
+public class OrderRestController{
+//            extends BaseController<OrderDto,Long, OrderEntity, OrderMapper, OrderServiceImpl>{
+
+
 
     @Autowired
     private OrderService orderService;
@@ -21,9 +19,9 @@ public class OrderRestController extends BaseController<OrderDto,OrderEntity
     @Autowired
     private OrderMapper orderMapper;
 
-    public OrderRestController(OrderItemServiceImpl service, OrderMapper mapper) {
-        super(service, mapper);
-    }
+//   // public OrderRestController(OrderItemServiceImpl service, OrderMapper mapper) {
+//        super(service, mapper);
+//    }
 
 //    @PostMapping
 //    public OrderDto saveOrder(@RequestBody OrderDto orderDto){

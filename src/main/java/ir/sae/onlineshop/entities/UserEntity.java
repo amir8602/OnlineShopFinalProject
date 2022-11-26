@@ -5,10 +5,7 @@ import ir.sae.onlineshop.base.BaseEntity;
 import ir.sae.onlineshop.enums.UserStatus;
 
 import javax.persistence.*;
-import javax.validation.constraints.Email;
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
+import javax.validation.constraints.*;
 import java.util.Date;
 
 @Entity
@@ -21,12 +18,14 @@ public class UserEntity extends BaseEntity {
 
     @NotBlank(message = "user.firstname.not.blank")
     @Size(min = 3 , max = 20 , message = "user.firstname.invalid.size")
+
     @Column(name = "FIRST_NAME")
     private String firstName;
 
 
     @NotBlank(message = "user.lastname.not.blank")
     @Size(min = 3 , max = 20 , message = "user.lastname.invalid.size")
+    @NotEmpty
     @Column(name = "LAST_NAME")
     private String lastName;
 
@@ -167,7 +166,7 @@ public class UserEntity extends BaseEntity {
         this.nationalCode = nationalCode;
         this.birthDate = birthDate;
         this.email = email;
-        this.phoneNumber = phoneNumber;
+//        this.phoneNumber = phoneNumber;
         this.status = status;
         this.order = order;
         this.username = username;
@@ -182,7 +181,7 @@ public class UserEntity extends BaseEntity {
                 ", nationalCode='" + nationalCode + '\'' +
                 ", birthDate=" + birthDate +
                 ", email='" + email + '\'' +
-                ", phoneNumber='" + phoneNumber + '\'' +
+//                ", phoneNumber='" + phoneNumber + '\'' +
                 ", status=" + status +
                 ", order=" + order +
                 ", username='" + username + '\'' +

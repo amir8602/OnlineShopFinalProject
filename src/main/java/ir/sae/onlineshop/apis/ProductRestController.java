@@ -1,26 +1,17 @@
 package ir.sae.onlineshop.apis;
 
-import ir.sae.onlineshop.base.BaseController;
-import ir.sae.onlineshop.dto.ProductDto;
-import ir.sae.onlineshop.entities.ProductEntity;
 import ir.sae.onlineshop.image.FileStorageService;
 import ir.sae.onlineshop.mappers.ProductMapper;
 import ir.sae.onlineshop.services.ProductService;
-import ir.sae.onlineshop.services.impl.ProductServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Example;
-import org.springframework.security.access.prepost.PreAuthorize;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.List;
-
 @RestController
 @RequestMapping("/products")
-public class ProductRestController extends BaseController<ProductDto,ProductEntity,
-        ProductMapper, ProductServiceImpl> {
+public class ProductRestController{
+//        extends BaseController
+//        <ProductDto,Long, ProductEntity, ProductMapper, ProductServiceImpl>{
 
     @Autowired
     private ProductService productService;
@@ -31,9 +22,9 @@ public class ProductRestController extends BaseController<ProductDto,ProductEnti
     @Autowired
     private FileStorageService imageService;
 
-    public ProductRestController(ProductServiceImpl service, ProductMapper mapper) {
-        super(service, mapper);
-    }
+//   // public ProductRestController(ProductServiceImpl service, ProductMapper mapper) {
+//        super(service, mapper);
+//    }
 
 
     //create
@@ -50,11 +41,11 @@ public class ProductRestController extends BaseController<ProductDto,ProductEnti
 //        //return productMapper.entityToModel(productService.saveProduct());
 //    }
 
-    @PreAuthorize("hasRole('USER') or hasRole('ADMIN')")
-    @PostMapping("/search-by-example")
-    public List<ProductDto> searchByExample(@RequestBody ProductDto productDto){
-        return productMapper.entityToDtoConvertor(productService.searchByExample(Example.of(productMapper.dtoToEntityConvertor(productDto))));
-    }
+//    @PreAuthorize("hasRole('USER') or hasRole('ADMIN')")
+//    @PostMapping("/search-by-example")
+//    public List<ProductDto> searchByExample(@RequestBody ProductDto productDto){
+//        return productMapper.entityToDtoConvertor(productService.searchByExample(Example.of(productMapper.dtoToEntityConvertor(productDto))));
+//    }
 
 
     //read

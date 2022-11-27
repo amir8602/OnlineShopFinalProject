@@ -21,7 +21,7 @@ public abstract class BaseEntity {
 
     @UpdateTimestamp
     @Temporal(TemporalType.TIMESTAMP)
-    private Date UpdateDate;
+    private Date updateDate;
 
     public Integer getVersion() {
         return version;
@@ -40,17 +40,17 @@ public abstract class BaseEntity {
     }
 
     public Date getUpdateDate() {
-        return UpdateDate;
+        return updateDate;
     }
 
     public void setUpdateDate(Date updateDate) {
-        UpdateDate = updateDate;
+        this.updateDate = updateDate;
     }
 
     public BaseEntity(Integer version, Date createDate, Date updateDate) {
         this.version = version;
         this.createDate = createDate;
-        UpdateDate = updateDate;
+        this.updateDate = updateDate;
     }
 
     public BaseEntity() {

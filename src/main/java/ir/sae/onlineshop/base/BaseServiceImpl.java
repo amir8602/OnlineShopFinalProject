@@ -1,42 +1,50 @@
 package ir.sae.onlineshop.base;
 
-
+import ir.sae.onlineshop.exceptions.BaseException;
 import org.springframework.data.domain.Example;
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.transaction.annotation.Transactional;
 
+import java.io.Serializable;
 import java.util.List;
-import java.util.Optional;
+
+public class BaseServiceImpl<T extends BaseEntity, ID extends Serializable,
+        R extends JpaRepository<T, ID>> implements BaseService<T, ID> {
+    R repository;
 
 
-public abstract class BaseServiceImpl < T extends JpaRepository< V , E >, V extends BaseEntity , E> {
-
-    protected final T repository;
-
-    public BaseServiceImpl(T repository) {
-        this.repository = repository;
+    @Override
+    public T save(T t) throws BaseException {
+        return repository.save(t);
     }
-    @Transactional
-    public V save(V v){
-        return repository.save(v);
+
+    @Override
+    public void deleteById(ID id) throws BaseException {
+
+            repository.deleteById(id);
+
+
     }
-    public Optional<V> getById(E e){
-        return repository.findById(e);
+
+    @Override
+    public void deleteEntity(T t) throws BaseException {
+        repository.delete(t);
     }
-    public List<V> getAll(){
+
+    @Override
+    public T findById(ID id) throws BaseException {
+
+
+
+            return repository.findById(id).get();
+    }
+
+    @Override
+    public List<T> findAll() throws BaseException {
         return repository.findAll();
     }
-    @Transactional
-    public V update(V v){
-        return repository.save(v);
-    }
-    public void delete(E e){
-        repository.deleteById(e);
-    }
-    public List<V> searchByExample(Example<V> vExample){
-        return repository.findAll(vExample);
-    }
 
-
-
+    @Override
+    public <S extends T> List<S> findAll(Example<S> example) {
+        return null;
+    }
 }

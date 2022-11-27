@@ -7,7 +7,7 @@ import org.hibernate.validator.constraints.Range;
 
 import javax.validation.constraints.NotNull;
 
-public class OrderItemDto extends BaseDto<Long> {
+public class OrderItemDto extends BaseDto {
 
 
 
@@ -23,7 +23,7 @@ public class OrderItemDto extends BaseDto<Long> {
     private OrderEntity orderEntity;
 
     public OrderItemDto(Long id, int quantity, double totalPrice, ProductEntity productEntity, OrderEntity orderEntity) {
-        super(id);
+
         this.quantity = quantity;
         this.totalPrice = totalPrice;
         this.productEntity = productEntity;

@@ -10,7 +10,7 @@ import javax.validation.constraints.NotNull;
 import java.util.Date;
 import java.util.List;
 
-public class OrderDto extends BaseDto<Long> {
+public class OrderDto extends BaseDto {
 
 
     private Double grandTotal;
@@ -45,7 +45,7 @@ public class OrderDto extends BaseDto<Long> {
     public OrderDto(Long id, Date createDate,
                     Date updateDate, Double grandTotal, UserDto userDto,
                     List<OrderItemDto> orderItemDtos, OrderStatus orderStatus) {
-        super(id);
+
         this.grandTotal = grandTotal;
         this.userDto = userDto;
         this.orderStatus = orderStatus;

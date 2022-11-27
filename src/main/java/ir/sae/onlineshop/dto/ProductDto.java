@@ -11,7 +11,7 @@ import java.math.BigDecimal;
 import java.util.List;
 
 
-public class ProductDto extends BaseDto<Long> {
+public class ProductDto extends BaseDto {
 
 
 
@@ -32,22 +32,12 @@ public class ProductDto extends BaseDto<Long> {
     private Long fileId;
 
 
-    public ProductDto(Long id, String productName, BigDecimal productPrice, Integer unitInStock, List<OrderItemEntity> orderItemEntityList, Long fileId) {
-        super(id);
-        this.productName = productName;
-        this.productPrice = productPrice;
-        this.unitInStock = unitInStock;
-        this.orderItemEntityList = orderItemEntityList;
-        this.fileId = fileId;
-    }
 
     public ProductDto() {
 
     }
 
-    public ProductDto(Long id) {
-        super(id);
-    }
+
 
     public ProductDto(String productName, BigDecimal productPrice, Integer unitInStock, List<OrderItemEntity> orderItemEntityList, Long fileId) {
         this.productName = productName;

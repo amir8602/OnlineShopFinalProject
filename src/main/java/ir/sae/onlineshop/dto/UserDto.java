@@ -10,7 +10,7 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.util.Date;
 
-public class UserDto extends BaseDto<Long> {
+public class UserDto extends BaseDto {
 
 
     @NotBlank(message = "user.firstname.not.blank")
@@ -56,13 +56,7 @@ public class UserDto extends BaseDto<Long> {
         this.orderDto = orderDto;
     }
 
-    public Long getVersion() {
-        return version;
-    }
 
-    public void setVersion(Long version) {
-        this.version = version;
-    }
 
     public String getFirstName() {
         return firstName;
@@ -129,7 +123,7 @@ public class UserDto extends BaseDto<Long> {
     }
 
     public UserDto(Long id, String firstName, String lastName, String nationalCode, Date birthDate, String email, String phoneNumber, OrderDto orderDto, UserStatus status, String username) {
-        super(id);
+
         this.firstName = firstName;
         this.lastName = lastName;
         this.nationalCode = nationalCode;

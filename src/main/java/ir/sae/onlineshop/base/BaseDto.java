@@ -2,34 +2,12 @@ package ir.sae.onlineshop.base;
 
 import java.util.Date;
 
-public abstract class BaseDto<T> {
+public abstract class BaseDto{
 
-    private T id;
-
+    private Integer version;
     private Date createDate;
 
-    private Date UpdateDate;
-
-    public BaseDto() {
-    }
-
-    public BaseDto(T id) {
-        this.id = id;
-    }
-
-    public BaseDto(T id, Date createDate, Date updateDate) {
-        this.id = id;
-        this.createDate = createDate;
-        UpdateDate = updateDate;
-    }
-
-    public T getId() {
-        return id;
-    }
-
-    public void setId(T id) {
-        this.id = id;
-    }
+    private Date updateDate;
 
     public Date getCreateDate() {
         return createDate;
@@ -40,10 +18,27 @@ public abstract class BaseDto<T> {
     }
 
     public Date getUpdateDate() {
-        return UpdateDate;
+        return updateDate;
+    }
+
+    public Integer getVersion() {
+        return version;
+    }
+
+    public void setVersion(Integer version) {
+        this.version = version;
     }
 
     public void setUpdateDate(Date updateDate) {
-        UpdateDate = updateDate;
+        this.updateDate = updateDate;
+    }
+
+    public BaseDto(Integer version, Date createDate, Date updateDate) {
+        this.version = version;
+        this.createDate = createDate;
+        this.updateDate = updateDate;
+    }
+
+    public BaseDto() {
     }
 }

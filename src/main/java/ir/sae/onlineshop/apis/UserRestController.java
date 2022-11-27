@@ -54,7 +54,7 @@ public class UserRestController {
         UserEntity userEntity = userMapper.modelToEntityConvertor(userDto);
         UserEntity user = new UserEntity(userDto.getId());
         UserEntity userById = userService.getUserById(user);
-        userEntity.setVersion(userById.getVersion());
+//        userEntity.setVersion(userById.getVersion());
         userEntity.setCreateDate(userById.getCreateDate());
         UserEntity saveUserEntity = userService.updateUser(userEntity);
         UserDto saveUserDto = userMapper.entityToModelConvertor(saveUserEntity);

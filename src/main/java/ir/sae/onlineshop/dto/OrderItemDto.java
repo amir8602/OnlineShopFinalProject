@@ -1,7 +1,6 @@
 package ir.sae.onlineshop.dto;
 
 import ir.sae.onlineshop.base.BaseDto;
-import ir.sae.onlineshop.entities.OrderEntity;
 import ir.sae.onlineshop.entities.ProductEntity;
 import org.hibernate.validator.constraints.Range;
 

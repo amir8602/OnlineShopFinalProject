@@ -8,16 +8,15 @@ import java.util.List;
 public interface UserService {
 
 
-    UserEntity saveUser(UserEntity userEntity);
+     UserEntity saveUser(UserEntity userEntity)throws BaseException;
 
-    List<UserEntity> getAllUser();
+    List<UserEntity> getAllUser()throws BaseException;
 
     UserEntity getUserById(UserEntity userEntity) throws BaseException;
 
-    UserEntity updateUser(UserEntity userEntity);
+    UserEntity updateUser(UserEntity userEntity) throws BaseException;
 
-    void deleteUser(Long id);
+    void deleteUser(Long id) throws BaseException;
 
-
-    UserEntity getByUsername(UserEntity userEntity);
+    UserEntity getByUsername(UserEntity userEntity) throws BaseException;
 }

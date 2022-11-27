@@ -27,7 +27,7 @@ public class UserRestController {
 
     @PostMapping
     @PreAuthorize("hasRole('USER') or hasRole('ADMIN')")
-    public UserDto saveUser(@RequestBody @Valid UserDto userDto) {
+    public UserDto saveUser(@RequestBody @Valid UserDto userDto) throws BaseException {
         UserEntity userEntity = userMapper.dtoToEntityConvertor(userDto);
         UserEntity saveUserEntity = userService.saveUser(userEntity);
         UserDto saveUserDto = userMapper.entityToDtoConvertor(saveUserEntity);
@@ -36,7 +36,7 @@ public class UserRestController {
 
     @GetMapping
     @PreAuthorize("hasRole('USER') or hasRole('ADMIN')")
-    public List<UserDto> getAllUser() {
+    public List<UserDto> getAllUser() throws BaseException {
         List<UserEntity> getAllUser = userService.getAllUser();
         List<UserDto> userDtos = userMapper.entityToDtoConvertor(getAllUser);
         return userDtos;
@@ -54,7 +54,7 @@ public class UserRestController {
 
     @PutMapping
     @PreAuthorize("hasRole('USER') or hasRole('ADMIN')")
-    public UserDto updateUser(@RequestBody UserDto userDto) {
+    public UserDto updateUser(@RequestBody UserDto userDto) throws BaseException {
         UserEntity userEntity = userMapper.dtoToEntityConvertor(userDto);
         UserEntity saveUserEntity = userService.updateUser(userEntity);
         return userMapper.entityToDtoConvertor(saveUserEntity);
@@ -76,7 +76,7 @@ public class UserRestController {
 
     @GetMapping("/byUserName/{username}")
     @PreAuthorize("hasRole('USER') or hasRole('ADMIN')")
-    public UserDto getUserByUsername(@PathVariable("username") String username) {
+    public UserDto getUserByUsername(@PathVariable("username") String username) throws BaseException {
         UserEntity userEntity = new UserEntity();
         userEntity.setUsername(username);
         UserEntity find = userService.getByUsername(userEntity);

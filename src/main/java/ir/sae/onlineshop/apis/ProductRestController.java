@@ -2,6 +2,7 @@ package ir.sae.onlineshop.apis;
 
 import ir.sae.onlineshop.dto.ProductDto;
 import ir.sae.onlineshop.entities.ProductEntity;
+import ir.sae.onlineshop.exceptions.BaseException;
 import ir.sae.onlineshop.image.FileDB;
 import ir.sae.onlineshop.image.FileStorageService;
 import ir.sae.onlineshop.mappers.ProductMapper;
@@ -31,7 +32,7 @@ public class ProductRestController{
 
     @PreAuthorize("hasRole('ADMIN')")
     @PostMapping
-    public ProductDto saveProduct(@RequestBody ProductDto productDto){
+    public ProductDto saveProduct(@RequestBody ProductDto productDto) throws BaseException {
         ProductEntity productEntity = productMapper.dtoToEntityConvertor(productDto);
         FileDB image = imageService.getFile(productDto.getFileId());
         productEntity.setFile(image);
@@ -43,7 +44,7 @@ public class ProductRestController{
 
     @PreAuthorize("hasRole('USER') or hasRole('ADMIN')")
     @PostMapping("/search-by-example")
-    public List<ProductDto> searchByExample(@RequestBody ProductDto productDto){
+    public List<ProductDto> searchByExample(@RequestBody ProductDto productDto) throws BaseException {
         return productMapper.entityToDtoConvertor(productService.searchByExample(Example.of(productMapper.dtoToEntityConvertor(productDto))));
     }
 
@@ -51,33 +52,30 @@ public class ProductRestController{
 
     @PreAuthorize("hasRole('ADMIN')")
     @GetMapping("/{id}")
-    public ProductDto getById(@PathVariable("id") Long id){
+    public ProductDto getById(@PathVariable("id") Long id) throws BaseException {
         return productMapper.entityToDtoConvertor(productService.getById(productMapper.dtoToEntityConvertor(new ProductDto(id))));
     }
 
 
     @PreAuthorize("hasRole('USER') or hasRole('ADMIN')")
     @GetMapping
-    public List<ProductDto> getAll(){
+    public List<ProductDto> getAll() throws BaseException {
         return productMapper.entityToDtoConvertor(productService.getAll());
     }
 
 
     @PreAuthorize("hasRole('ADMIN')")
     @DeleteMapping("/{id}")
-    public String deleteById(@PathVariable("id") Long id){
-        try{
-            productService.delete(new ProductEntity(id));
-            return "Product Deleted !!!";
-        }catch (RuntimeException runtimeException){
-            return "Product Not Found";
-        }
+    public String deleteById(@PathVariable("id") Long id) throws BaseException {
+
+        productService.delete(new ProductEntity(id));
+        return "Product Deleted !!!";
     }
 
 
     @PutMapping
     @PreAuthorize("hasRole('ADMIN')")
-    public ProductDto update(@RequestBody @Valid ProductDto productDto){
+    public ProductDto update(@RequestBody @Valid ProductDto productDto) throws BaseException {
         return productMapper.entityToDtoConvertor(productService.update(productMapper.dtoToEntityConvertor(productDto)));
 
     }

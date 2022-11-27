@@ -46,8 +46,7 @@ public class ProductEntity extends BaseEntity {
     @OneToOne(cascade = {CascadeType.REFRESH , CascadeType.MERGE})
     private FileDB file;
 
-    public ProductEntity(ProductBuilder productBuilder) {
-    }
+
 
 
     public Long getId() {
@@ -96,22 +95,6 @@ public class ProductEntity extends BaseEntity {
     }
 
     public void setFile(FileDB file) {
-        this.file = file;
-    }
-
-    public ProductEntity() {
-    }
-
-    public ProductEntity(Long id) {
-        this.id = id;
-    }
-
-    public ProductEntity(Long id, String productName, BigDecimal productPrice, Integer unitInStock, List<OrderItemEntity> orderItem, FileDB file) {
-        this.id = id;
-        this.productName = productName;
-        this.productPrice = productPrice;
-        this.unitInStock = unitInStock;
-        this.orderItem = orderItem;
         this.file = file;
     }
 }

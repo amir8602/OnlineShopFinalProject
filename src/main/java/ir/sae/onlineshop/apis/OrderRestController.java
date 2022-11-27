@@ -23,17 +23,17 @@ public class OrderRestController{
 
 
     @PostMapping
-    public OrderDto saveOrder(@RequestBody OrderDto orderDto){
+    public OrderDto saveOrder(@RequestBody OrderDto orderDto) throws BaseException {
         return orderMapper.entityToDtoConvertor(orderService.saveOrder(orderMapper.dtoToEntityConvertor(orderDto)));
     }
 
     @PutMapping
-    public OrderDto updateOrder(@RequestBody OrderDto orderDto){
+    public OrderDto updateOrder(@RequestBody OrderDto orderDto) throws BaseException {
         return orderMapper.entityToDtoConvertor(orderService.updateOrder(orderMapper.dtoToEntityConvertor(orderDto)));
     }
 
     @GetMapping
-    public List<OrderDto> findAll(){
+    public List<OrderDto> findAll() throws BaseException {
         return orderMapper.entityToDtoConvertor(orderService.findAll());
     }
 
@@ -43,7 +43,7 @@ public class OrderRestController{
     }
 
     @DeleteMapping("/{id}")
-    public void deleteById(@PathVariable Long id){
+    public void deleteById(@PathVariable Long id) throws BaseException {
         orderService.deleteById(new OrderEntity(id));
     }
 }

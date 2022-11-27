@@ -9,6 +9,7 @@ import org.springframework.data.domain.Example;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.NoSuchElementException;
 
 @Service
 public class OrderServiceImpl implements OrderService {
@@ -34,7 +35,7 @@ public class OrderServiceImpl implements OrderService {
     public OrderEntity findById(OrderEntity orderEntity) throws BaseException {
         try {
             OrderEntity orderEntity1 = orderRepository.findById(orderEntity.getId()).get();
-        }catch (Exception e){
+        }catch (NoSuchElementException e){
 //            Logger
             throw new BaseException("Entity not found" , e.getCause() , "NoSuchElementException"  );
         }
@@ -45,7 +46,6 @@ public class OrderServiceImpl implements OrderService {
     @Override
     public void deleteById(OrderEntity orderEntity) {
         orderRepository.deleteById(orderEntity.getId());
-
     }
 
     @Override

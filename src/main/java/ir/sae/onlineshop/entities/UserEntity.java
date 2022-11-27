@@ -74,6 +74,7 @@ public class UserEntity extends BaseEntity {
 
 
 
+
     public Long getId() {
         return id;
     }

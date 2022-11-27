@@ -6,16 +6,16 @@ import ir.sae.onlineshop.exceptions.BaseException;
 import java.util.List;
 
 public interface OrderService {
-    OrderEntity saveOrder(OrderEntity orderEntity);
+    OrderEntity saveOrder(OrderEntity orderEntity)throws BaseException;
 
-    OrderEntity updateOrder(OrderEntity orderEntity);
+    OrderEntity updateOrder(OrderEntity orderEntity)throws BaseException;
 
-    List<OrderEntity> findAll();
+    List<OrderEntity> findAll()throws BaseException;
 
     OrderEntity findById(OrderEntity orderEntity)throws BaseException;
 
-    void deleteById(OrderEntity orderEntity);
+    void deleteById(OrderEntity orderEntity)throws BaseException;
 
-    List<OrderEntity> findByExample(OrderEntity orderEntity);
+    List<OrderEntity> findByExample(OrderEntity orderEntity)throws BaseException;
 
 }

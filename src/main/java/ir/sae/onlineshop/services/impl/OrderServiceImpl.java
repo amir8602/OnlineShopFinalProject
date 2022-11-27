@@ -1,6 +1,7 @@
 package ir.sae.onlineshop.services.impl;
 
 import ir.sae.onlineshop.entities.OrderEntity;
+import ir.sae.onlineshop.exceptions.BaseException;
 import ir.sae.onlineshop.repositories.OrderRepository;
 import ir.sae.onlineshop.services.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,8 +31,15 @@ public class OrderServiceImpl implements OrderService {
     }
 
     @Override
-    public OrderEntity findById(OrderEntity orderEntity) {
-        return orderRepository.findById(orderEntity.getId()).get();
+    public OrderEntity findById(OrderEntity orderEntity) throws BaseException {
+        try {
+            OrderEntity orderEntity1 = orderRepository.findById(orderEntity.getId()).get();
+        }catch (Exception e){
+//            Logger
+            throw new BaseException("Entity not found" , e.getCause() , "NoSuchElementException"  );
+        }
+
+        return null;
     }
 
     @Override

@@ -11,9 +11,6 @@ public abstract class BaseEntity {
 
 
 
-    @Version
-    private Integer version;
-
     @CreationTimestamp
     @Temporal(TemporalType.TIMESTAMP)
     @Column(updatable = false)
@@ -23,13 +20,7 @@ public abstract class BaseEntity {
     @Temporal(TemporalType.TIMESTAMP)
     private Date UpdateDate;
 
-    public Integer getVersion() {
-        return version;
-    }
 
-    public void setVersion(Integer version) {
-        this.version = version;
-    }
 
     public Date getCreateDate() {
         return createDate;
@@ -47,8 +38,8 @@ public abstract class BaseEntity {
         UpdateDate = updateDate;
     }
 
-    public BaseEntity(Integer version, Date createDate, Date updateDate) {
-        this.version = version;
+    public BaseEntity( Date createDate, Date updateDate) {
+
         this.createDate = createDate;
         UpdateDate = updateDate;
     }

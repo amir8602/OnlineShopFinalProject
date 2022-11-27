@@ -1,6 +1,7 @@
 package ir.sae.onlineshop.services.impl;
 
 import ir.sae.onlineshop.entities.UserEntity;
+import ir.sae.onlineshop.exceptions.BaseException;
 import ir.sae.onlineshop.repositories.UserRepository;
 import ir.sae.onlineshop.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,6 +9,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.NoSuchElementException;
 
 @Service
 @Transactional(readOnly = true)
@@ -29,8 +31,15 @@ public class UserServiceImpl implements UserService{
     }
 
     @Override
-    public UserEntity getUserById(UserEntity userEntity) {
-        return userRepository.findById(userEntity.getId()).get();
+    public UserEntity getUserById(UserEntity userEntity)throws BaseException {
+        UserEntity user;
+        try {
+             user = userRepository.findById(userEntity.getId()).get();
+        }catch (NoSuchElementException e){
+            //Log
+            throw new BaseException("Entity not found" , e.getCause() , "NoSuchElementException"  );
+        }
+        return user;
     }
 
     @Override

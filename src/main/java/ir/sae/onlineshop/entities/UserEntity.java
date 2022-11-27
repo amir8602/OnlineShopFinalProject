@@ -166,25 +166,11 @@ public class UserEntity extends BaseEntity {
         this.nationalCode = nationalCode;
         this.birthDate = birthDate;
         this.email = email;
-//        this.phoneNumber = phoneNumber;
+        this.phoneNumber = phoneNumber;
         this.status = status;
         this.order = order;
         this.username = username;
     }
 
-    @Override
-    public String toString() {
-        return "UserEntity{" +
-                "id=" + id +
-                ", firstName='" + firstName + '\'' +
-                ", lastName='" + lastName + '\'' +
-                ", nationalCode='" + nationalCode + '\'' +
-                ", birthDate=" + birthDate +
-                ", email='" + email + '\'' +
-//                ", phoneNumber='" + phoneNumber + '\'' +
-                ", status=" + status +
-                ", order=" + order +
-                ", username='" + username + '\'' +
-                '}';
-    }
+
 }

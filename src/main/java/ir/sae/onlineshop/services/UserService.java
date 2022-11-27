@@ -1,6 +1,7 @@
 package ir.sae.onlineshop.services;
 
 import ir.sae.onlineshop.entities.UserEntity;
+import ir.sae.onlineshop.exceptions.BaseException;
 
 import java.util.List;
 
@@ -11,7 +12,7 @@ public interface UserService {
 
     List<UserEntity> getAllUser();
 
-    UserEntity getUserById(UserEntity userEntity);
+    UserEntity getUserById(UserEntity userEntity) throws BaseException;
 
     UserEntity updateUser(UserEntity userEntity);
 

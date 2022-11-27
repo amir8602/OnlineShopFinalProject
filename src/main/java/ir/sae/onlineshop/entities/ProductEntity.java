@@ -10,6 +10,7 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.math.BigDecimal;
+import java.util.Date;
 import java.util.List;
 
 @Entity
@@ -47,7 +48,14 @@ public class ProductEntity extends BaseEntity {
     private FileDB file;
 
 
+    public ProductEntity(Date createDate, Date updateDate, Long id) {
+        super(createDate, updateDate);
+        this.id = id;
+    }
 
+    public ProductEntity(Long id) {
+
+    }
 
     public Long getId() {
         return id;

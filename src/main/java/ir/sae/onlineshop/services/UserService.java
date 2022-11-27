@@ -17,5 +17,5 @@ public interface UserService extends BaseService<UserEntity, Long> {
 //    void deleteUser(Long id);
 
 
-    UserEntity getByUsername(UserEntity userEntity);
+    UserEntity findByUsername(UserEntity userEntity);
 }

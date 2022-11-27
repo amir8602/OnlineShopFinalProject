@@ -6,6 +6,9 @@ import ir.sae.onlineshop.entities.OrderEntity;
 import java.util.List;
 
 public interface OrderService extends BaseService<OrderEntity, Long> {
+
+    List<OrderEntity> search(OrderEntity orderEntity);
+
 //    OrderEntity saveOrder(OrderEntity orderEntity);
 //
 //    OrderEntity updateOrder(OrderEntity orderEntity);
@@ -16,6 +19,6 @@ public interface OrderService extends BaseService<OrderEntity, Long> {
 //
 //    void deleteById(OrderEntity orderEntity);
 
-    List<OrderEntity> findByExample(OrderEntity orderEntity);
+
 
 }

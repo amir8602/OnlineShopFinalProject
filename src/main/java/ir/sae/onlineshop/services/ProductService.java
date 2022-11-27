@@ -7,6 +7,9 @@ import org.springframework.data.domain.Example;
 import java.util.List;
 
 public interface ProductService extends BaseService<ProductEntity, Long> {
+
+    List<ProductEntity> search(Example<ProductEntity> example);
+
 //    ProductEntity saveProduct(ProductEntity productEntity);
 //
 //    ProductEntity getById(ProductEntity productEntity);
@@ -17,5 +20,5 @@ public interface ProductService extends BaseService<ProductEntity, Long> {
 //
 //    void delete(ProductEntity productEntity);
 
-    List<ProductEntity> searchByExample(Example<ProductEntity> of);
+
 }

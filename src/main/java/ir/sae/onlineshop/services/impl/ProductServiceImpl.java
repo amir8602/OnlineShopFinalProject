@@ -17,6 +17,11 @@ public class ProductServiceImpl  extends BaseServiceImpl<ProductEntity,
 
     @Autowired
     private ProductRepository productRepository;
+
+    @Override
+    public List<ProductEntity> search(Example<ProductEntity> example) {
+        return productRepository.findAll(example);
+    }
 //    @Override
 //    public ProductEntity saveProduct(ProductEntity productEntity) {
 //        return productRepository.save(productEntity);
@@ -42,8 +47,5 @@ public class ProductServiceImpl  extends BaseServiceImpl<ProductEntity,
 //        productRepository.deleteById(productEntity.getId());
 //    }
 
-    @Override
-    public List<ProductEntity> searchByExample(Example<ProductEntity> of) {
-        return productRepository.findAll(of);
-    }
+
 }

@@ -29,6 +29,7 @@ public class OrderItemController extends BaseRestController<
     OrderItemMapper orderItemMapper;
 
 
+
 //    @PostMapping
 //    @PreAuthorize("hasRole('ADMIN') or hasRole('USER')")
 //    public OrderItemDto saveOrderItem(@RequestBody OrderItemDto orderItemDto) {
@@ -76,16 +77,7 @@ public class OrderItemController extends BaseRestController<
 //
 //    }
 //
-//    @DeleteMapping
-//    @PreAuthorize("hasRole('ADMIN') or hasRole('USER')")
-//    public void deleteAllOrderItem(@RequestBody OrderItemDto orderItemDto) {
-//
-//        OrderItemEntity orderItemEntity = orderItemMapper.dtoToEntityConvertor(orderItemDto);
-//
-//        orderItemService.deleteAllOrderItem(orderItemEntity);
-//
-//
-//    }
+
 
 
 }

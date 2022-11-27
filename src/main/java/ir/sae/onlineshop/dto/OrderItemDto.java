@@ -6,6 +6,7 @@ import ir.sae.onlineshop.entities.ProductEntity;
 import org.hibernate.validator.constraints.Range;
 
 import javax.validation.constraints.NotNull;
+import java.util.Date;
 
 public class OrderItemDto extends BaseDto {
 
@@ -17,17 +18,25 @@ public class OrderItemDto extends BaseDto {
 
     private Double totalPrice;
 
-    private ProductEntity productEntity;
+    private ProductEntity product;
 
     @NotNull
-    private OrderEntity orderEntity;
+    private OrderEntity order;
 
-    public OrderItemDto(Long id, int quantity, double totalPrice, ProductEntity productEntity, OrderEntity orderEntity) {
 
+    public OrderItemDto(Integer version, Date createDate, Date updateDate, Integer quantity, Double totalPrice, ProductEntity product, OrderEntity order) {
+        super(version, createDate, updateDate);
         this.quantity = quantity;
         this.totalPrice = totalPrice;
-        this.productEntity = productEntity;
-        this.orderEntity = orderEntity;
+        this.product = product;
+        this.order = order;
+    }
+
+    public OrderItemDto(Integer quantity, Double totalPrice, ProductEntity product, OrderEntity order) {
+        this.quantity = quantity;
+        this.totalPrice = totalPrice;
+        this.product = product;
+        this.order = order;
     }
 
     public OrderItemDto() {
@@ -51,19 +60,27 @@ public class OrderItemDto extends BaseDto {
         this.totalPrice = totalPrice;
     }
 
-    public ProductEntity getProductEntity() {
-        return productEntity;
+    public void setQuantity(Integer quantity) {
+        this.quantity = quantity;
     }
 
-    public void setProductEntity(ProductEntity productEntity) {
-        this.productEntity = productEntity;
+    public void setTotalPrice(Double totalPrice) {
+        this.totalPrice = totalPrice;
     }
 
-    public OrderEntity getOrderEntity() {
-        return orderEntity;
+    public ProductEntity getProduct() {
+        return product;
     }
 
-    public void setOrderEntity(OrderEntity orderEntity) {
-        this.orderEntity = orderEntity;
+    public void setProduct(ProductEntity product) {
+        this.product = product;
+    }
+
+    public OrderEntity getOrder() {
+        return order;
+    }
+
+    public void setOrder(OrderEntity order) {
+        this.order = order;
     }
 }

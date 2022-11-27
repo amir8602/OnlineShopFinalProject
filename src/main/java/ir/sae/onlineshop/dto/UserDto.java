@@ -37,7 +37,7 @@ public class UserDto extends BaseDto {
     @Size(min = 11, max = 11, message = "user.phone.number.invalid.size")
     private String phoneNumber;
 
-    private OrderDto orderDto;
+    private OrderDto order;
 
     @NotNull
     private UserStatus status;
@@ -48,15 +48,19 @@ public class UserDto extends BaseDto {
 
     private Long version;
 
-    public OrderDto getOrderDto() {
-        return orderDto;
+
+    public OrderDto getOrder() {
+        return order;
     }
 
-    public void setOrderDto(OrderDto orderDto) {
-        this.orderDto = orderDto;
+    public void setOrder(OrderDto order) {
+        this.order = order;
     }
 
 
+    public void setVersion(Long version) {
+        this.version = version;
+    }
 
     public String getFirstName() {
         return firstName;
@@ -114,13 +118,6 @@ public class UserDto extends BaseDto {
         this.status = status;
     }
 
-    public OrderDto getOrderModel() {
-        return orderDto;
-    }
-
-    public void setOrderModel(OrderDto orderDto) {
-        this.orderDto = orderDto;
-    }
 
     public UserDto(Long id, String firstName, String lastName, String nationalCode, Date birthDate, String email, String phoneNumber, OrderDto orderDto, UserStatus status, String username) {
 
@@ -130,7 +127,7 @@ public class UserDto extends BaseDto {
         this.birthDate = birthDate;
         this.email = email;
         this.phoneNumber = phoneNumber;
-        this.orderDto = orderDto;
+        this.order= order;
         this.status = status;
         this.username = username;
     }
@@ -147,7 +144,7 @@ public class UserDto extends BaseDto {
         this.birthDate = birthDate;
         this.email = email;
         this.phoneNumber = phoneNumber;
-        this.orderDto = orderDto;
+        this.order= order;
         this.status = status;
         this.username = username;
     }

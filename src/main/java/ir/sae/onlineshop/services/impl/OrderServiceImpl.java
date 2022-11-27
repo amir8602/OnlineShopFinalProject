@@ -18,6 +18,10 @@ public class OrderServiceImpl extends BaseServiceImpl<OrderEntity,
     OrderRepository orderRepository;
 
 
+    @Override
+    public List<OrderEntity> search(OrderEntity orderEntity) {
+        return orderRepository.findAll(Example.of(orderEntity));
+    }
  
 
 //    @Override
@@ -62,8 +66,5 @@ public class OrderServiceImpl extends BaseServiceImpl<OrderEntity,
 //
 //    }
 
-    @Override
-    public List<OrderEntity> findByExample(OrderEntity orderEntity) {
-        return orderRepository.findAll(Example.of(orderEntity));
-    }
+
 }

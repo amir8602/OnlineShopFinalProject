@@ -14,9 +14,12 @@ public class UserServiceImpl extends BaseServiceImpl<UserEntity,
         Long, UserRepository> implements UserService {
 
 
+    @Autowired
+    UserRepository userRepository;
 
-        @Autowired
-        UserRepository userRepository;
+    public UserEntity findByUsername(UserEntity userEntity) {
+        return userRepository.findByUsername(userEntity.getUsername());
+    }
 
 
 //    @Override
@@ -49,7 +52,4 @@ public class UserServiceImpl extends BaseServiceImpl<UserEntity,
 //    }
 
 
-        public UserEntity getByUsername (UserEntity userEntity){
-        return userRepository.getByUsername(userEntity.getUsername());
-    }
-    }
+}

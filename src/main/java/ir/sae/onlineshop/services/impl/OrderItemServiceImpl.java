@@ -18,6 +18,8 @@ public class OrderItemServiceImpl extends BaseServiceImpl<OrderItemEntity,
     OrderRepository orderRepository;
 
 
+
+
     //    @Override
 //    public OrderItemEntity saveOrderItem(OrderItemEntity orderItemEntity) {
 //        return orderItemRepository.save(orderItemEntity);
@@ -42,11 +44,6 @@ public class OrderItemServiceImpl extends BaseServiceImpl<OrderItemEntity,
 //    public List<OrderItemEntity> getAll() {
 //        return orderItemRepository.findAll();
 //    }
-    @Override
-    public void deleteAllOrderItem(OrderItemEntity orderItemEntity) {
-
-        orderRepository.deleteAll();
-    }
 
 
 }

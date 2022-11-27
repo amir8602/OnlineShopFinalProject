@@ -27,7 +27,7 @@ public class ProductDto extends BaseDto {
     @Range(min = 0)
     private Integer unitInStock;
 
-    private List<OrderItemEntity> orderItemEntityList;
+    private List<OrderItemEntity> orderItemList;
 
     private Long fileId;
 
@@ -43,7 +43,7 @@ public class ProductDto extends BaseDto {
         this.productName = productName;
         this.productPrice = productPrice;
         this.unitInStock = unitInStock;
-        this.orderItemEntityList = orderItemEntityList;
+        this.orderItemList = orderItemList;
         this.fileId = fileId;
     }
 
@@ -71,14 +71,6 @@ public class ProductDto extends BaseDto {
         this.unitInStock = unitInStock;
     }
 
-    public List<OrderItemEntity> getOrderItemEntityList() {
-        return orderItemEntityList;
-    }
-
-    public void setOrderItemEntityList(List<OrderItemEntity> orderItemEntityList) {
-        this.orderItemEntityList = orderItemEntityList;
-    }
-
     public Long getFileId() {
         return fileId;
     }
@@ -87,4 +79,11 @@ public class ProductDto extends BaseDto {
         this.fileId = fileId;
     }
 
+    public List<OrderItemEntity> getOrderItemList() {
+        return orderItemList;
+    }
+
+    public void setOrderItemList(List<OrderItemEntity> orderItemList) {
+        this.orderItemList = orderItemList;
+    }
 }

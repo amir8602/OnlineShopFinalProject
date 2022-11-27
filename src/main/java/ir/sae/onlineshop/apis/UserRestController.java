@@ -29,6 +29,14 @@ public class UserRestController extends BaseRestController<
         super(service, mapper);
     }
 
+    @GetMapping("/{username}")
+    public UserDto getUserByUsername(@PathVariable("username") String username){
+        UserEntity userEntity = new UserEntity();
+        userEntity.setUsername(username);
+        UserEntity find=userService.findByUsername(userEntity);
+        UserDto userDto = userMapper.entityToDtoConvertor(find);
+        return userDto;
+    }
 
 //        @PostMapping
 //    public UserDto saveUser(@RequestBody @Valid UserDto userDto) {
@@ -78,13 +86,5 @@ public class UserRestController extends BaseRestController<
 //        userService.deleteUser(userEntity.getId());
 //    }
 
-    @GetMapping("/{username}")
-    public UserDto getUserByUsername(@PathVariable("username") String username){
-        UserEntity userEntity = new UserEntity();
-        userEntity.setUsername(username);
-        UserEntity find=userService.getByUsername(userEntity);
-        UserDto userDto = userMapper.entityToDtoConvertor(find);
-        return userDto;
-    }
 
 }

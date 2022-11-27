@@ -17,10 +17,10 @@ public class OrderDto extends BaseDto {
 
 
     @NotNull
-    private UserDto userDto;
+    private UserDto user;
 
 
-    private List<OrderItemDto> orderItemDtos;
+    private List<OrderItemDto> orderItems;
 
 
     @NotNull
@@ -33,21 +33,18 @@ public class OrderDto extends BaseDto {
     public OrderDto() {
     }
 
-
-    public OrderDto(Double grandTotal, UserDto userDto,
-                    List<OrderItemDto> orderItemDtos, OrderStatus orderStatus) {
+    public OrderDto(Integer version, Date createDate, Date updateDate, Double grandTotal, UserDto user, List<OrderItemDto> orderItems, OrderStatus orderStatus) {
+        super(version, createDate, updateDate);
         this.grandTotal = grandTotal;
-        this.userDto = userDto;
-        this.orderItemDtos = orderItemDtos;
+        this.user = user;
+        this.orderItems = orderItems;
         this.orderStatus = orderStatus;
     }
 
-    public OrderDto(Long id, Date createDate,
-                    Date updateDate, Double grandTotal, UserDto userDto,
-                    List<OrderItemDto> orderItemDtos, OrderStatus orderStatus) {
-
+    public OrderDto(Double grandTotal, UserDto user, List<OrderItemDto> orderItems, OrderStatus orderStatus) {
         this.grandTotal = grandTotal;
-        this.userDto = userDto;
+        this.user = user;
+        this.orderItems = orderItems;
         this.orderStatus = orderStatus;
     }
 
@@ -59,22 +56,6 @@ public class OrderDto extends BaseDto {
         this.grandTotal = grandTotal;
     }
 
-    public UserDto getUserModel() {
-        return userDto;
-    }
-
-    public void setUserModel(UserDto userDto) {
-        this.userDto = userDto;
-    }
-
-    public List<OrderItemDto> getOrderItemModels() {
-        return orderItemDtos;
-    }
-
-    public void setOrderItemModels(List<OrderItemDto> orderItemDtos) {
-        this.orderItemDtos = orderItemDtos;
-    }
-
     public OrderStatus getOrderStatus() {
         return orderStatus;
     }
@@ -83,5 +64,23 @@ public class OrderDto extends BaseDto {
         this.orderStatus = orderStatus;
     }
 
+    public void setGrandTotal(Double grandTotal) {
+        this.grandTotal = grandTotal;
+    }
 
+    public UserDto getUser() {
+        return user;
+    }
+
+    public void setUser(UserDto user) {
+        this.user = user;
+    }
+
+    public List<OrderItemDto> getOrderItems() {
+        return orderItems;
+    }
+
+    public void setOrderItems(List<OrderItemDto> orderItems) {
+        this.orderItems = orderItems;
+    }
 }

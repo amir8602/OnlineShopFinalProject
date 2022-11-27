@@ -11,7 +11,7 @@ import java.util.List;
 
 @Service
 @Transactional(readOnly = true)
-public class UserServiceImpl implements UserService{
+public class UserServiceImpl  implements UserService{
 
 
     @Autowired
@@ -36,6 +36,7 @@ public class UserServiceImpl implements UserService{
     @Override
     @Transactional
     public UserEntity updateUser(UserEntity userEntity) {
+
         return userRepository.save(userEntity);
     }
 

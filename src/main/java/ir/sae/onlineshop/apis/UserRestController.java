@@ -25,10 +25,6 @@ public class UserRestController {
     @Autowired
     private UserMapper userMapper;
 
-//  //  public UserRestController(UserServiceImpl service, UserMapper mapper) {
-//        super(service, mapper);
-//    }
-
 
         @PostMapping
     public UserDto saveUser(@RequestBody @Valid UserDto userDto) {
@@ -71,15 +67,11 @@ public class UserRestController {
 
 
     @DeleteMapping("/{id}")
-    public String deleteUserById(@PathVariable("id") Long id) {
+    public void deleteUserById(@PathVariable("id") Long id) {
         UserEntity userEntity = new UserEntity(id);
-        try {
 
-            userService.deleteUser(userEntity.getId());
-        } catch (Exception e) {
-            return "user is not found!";
-        }
-        return "user remove Successfully!";
+
+        userService.deleteUser(userEntity.getId());
     }
 
     @GetMapping("/{username}")

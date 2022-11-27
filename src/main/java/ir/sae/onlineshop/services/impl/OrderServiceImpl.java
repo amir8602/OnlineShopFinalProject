@@ -14,6 +14,10 @@ public class OrderServiceImpl implements OrderService {
 
     @Autowired
     OrderRepository orderRepository;
+
+
+ 
+
     @Override
     public OrderEntity saveOrder(OrderEntity orderEntity) {
         return orderRepository.save(orderEntity);
@@ -31,6 +35,7 @@ public class OrderServiceImpl implements OrderService {
 
     @Override
     public OrderEntity findById(OrderEntity orderEntity) {
+
         return orderRepository.findById(orderEntity.getId()).get();
     }
 
@@ -39,6 +44,21 @@ public class OrderServiceImpl implements OrderService {
         orderRepository.deleteById(orderEntity.getId());
 
     }
+
+//    @Override
+//    public OrderEntity getOrderGrandTotal(long orderId) {
+//
+//        double grandTotal=0;
+//        Optional<OrderEntity> findById =orderRepository.findById(orderId);
+//        List<OrderItemEntity> findOrderItem = findById.get().getOrderItem();
+//        for (OrderItemEntity orderItemEntity : findOrderItem) {
+//            grandTotal += orderItemEntity.getTotalPrice();
+//          return null;
+//
+//
+//        }
+//
+//    }
 
     @Override
     public List<OrderEntity> findByExample(OrderEntity orderEntity) {

@@ -7,10 +7,10 @@ import ir.sae.onlineshop.entities.OrderItemEntity;
 import ir.sae.onlineshop.mappers.OrderItemMapper;
 import ir.sae.onlineshop.services.OrderItemService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 
 @RestController
@@ -31,58 +31,55 @@ public class OrderItemController {
 
 
 
-//    @PostMapping
-//    @PreAuthorize("hasRole('ADMIN') or hasRole('USER')")
-//    public OrderItemDto saveOrderItem(@RequestBody OrderItemDto orderItemDto) {
-//        OrderItemEntity orderItemEntity = orderItemMapper.dtoToEntityConvertor(orderItemDto);
-//        OrderItemEntity saveOrderItemEntity = orderItemService.saveOrderItem(orderItemEntity);
-//        OrderItemDto saveOrderItemDto = orderItemMapper.entityToDtoConvertor(saveOrderItemEntity);
-//        return saveOrderItemDto;
-//    }
+    @PostMapping
+    @PreAuthorize("hasRole('ADMIN') or hasRole('USER')")
+    public OrderItemDto saveOrderItem(@RequestBody OrderItemDto orderItemDto) {
+        OrderItemEntity orderItemEntity = orderItemMapper.dtoToEntityConvertor(orderItemDto);
+        OrderItemEntity saveOrderItemEntity = orderItemService.saveOrderItem(orderItemEntity);
+        OrderItemDto saveOrderItemDto = orderItemMapper.entityToDtoConvertor(saveOrderItemEntity);
+        return saveOrderItemDto;
+    }
 
-//    @GetMapping("/{id}")
-//    @PreAuthorize("hasRole('ADMIN')")
-//    public OrderItemDto getOrderItemById(@PathVariable("id") Long id) {
-//        OrderItemEntity orderItemEntity = new OrderItemEntity(id);
-//        OrderItemEntity orderItemById = orderItemService.getOrderItemById(orderItemEntity);
-//         OrderItemDto getOrderItemDto = orderItemMapper.entityToDtoConvertor(orderItemById);
-//        return getOrderItemDto;
-//    }
+    @GetMapping("/{id}")
+    @PreAuthorize("hasRole('ADMIN')")
+    public OrderItemDto getOrderItemById(@PathVariable("id") Long id) {
+        OrderItemEntity orderItemEntity = new OrderItemEntity(id);
+        OrderItemEntity orderItemById = orderItemService.getOrderItemById(orderItemEntity);
+         OrderItemDto getOrderItemDto = orderItemMapper.entityToDtoConvertor(orderItemById);
+        return getOrderItemDto;
+    }
 
-//    @GetMapping
-//    @PreAuthorize("hasRole('ADMIN') or hasRole('USER')")
-//    public List<OrderItemDto> getAllOrderItem() {
-//        List<OrderItemEntity> getAllOrderItem = orderItemService.getAll();
-//        List<OrderItemDto> getAllOrderItemDtos = orderItemMapper.entityToDtoConvertor(getAllOrderItem);
-//        return getAllOrderItemDtos;
-//
-//    }
+    @GetMapping
+    @PreAuthorize("hasRole('ADMIN') or hasRole('USER')")
+    public List<OrderItemDto> getAllOrderItem() {
+        List<OrderItemEntity> getAllOrderItem = orderItemService.getAll();
+        List<OrderItemDto> getAllOrderItemDtos = orderItemMapper.entityToDtoConvertor(getAllOrderItem);
+        return getAllOrderItemDtos;
 
-//    @PutMapping
-//    @PreAuthorize("hasRole('ADMIN') or hasRole('USER')")
-//    public OrderItemDto updateOrderItem(@RequestBody OrderItemDto orderItemDto) {
-//        OrderItemEntity orderItemEntity = orderItemMapper.dtoToEntityConvertor(orderItemDto);
-//        OrderItemEntity updateOrderItemEntity = orderItemService.updateOrderItem(orderItemEntity);
-//        OrderItemDto updateOrderItemDto = orderItemMapper.entityToDtoConvertor(updateOrderItemEntity);
-//        return updateOrderItemDto;
-//    }
+    }
 
-//    @DeleteMapping("/{id}")
-//    @PreAuthorize("hasRole('ADMIN') or hasRole('USER')")
-//    public String deleteOrderItem(@PathVariable("id") Long id) {
-//
-//        OrderItemEntity orderItemEntity = new OrderItemEntity(id);
-//
-//        try {
-//            orderItemService.deleteOrderItem(orderItemEntity.getId());
-//        } catch (Exception e) {
-//            return "orderItem is not found!";
-//        }
-//        return "orderItem remove of order Successfully!";
-//    }
+    @PutMapping
+    @PreAuthorize("hasRole('ADMIN') or hasRole('USER')")
+    public OrderItemDto updateOrderItem(@RequestBody OrderItemDto orderItemDto) {
+        OrderItemEntity orderItemEntity = orderItemMapper.dtoToEntityConvertor(orderItemDto);
+        OrderItemEntity updateOrderItemEntity = orderItemService.updateOrderItem(orderItemEntity);
+        OrderItemDto updateOrderItemDto = orderItemMapper.entityToDtoConvertor(updateOrderItemEntity);
+        return updateOrderItemDto;
+    }
+
+    @DeleteMapping("/{id}")
+    @PreAuthorize("hasRole('ADMIN') or hasRole('USER')")
+    public void deleteOrderItem(@PathVariable("id") Long id) {
+
+        OrderItemEntity orderItemEntity = new OrderItemEntity(id);
+
+
+            orderItemService.deleteOrderItem(orderItemEntity.getId());
+
+    }
 
     @DeleteMapping
-//    @PreAuthorize("hasRole('ADMIN') or hasRole('USER')")
+    @PreAuthorize("hasRole('ADMIN') or hasRole('USER')")
     public String deleteAllOrderItem(@RequestBody OrderItemDto orderItemDto) {
 
         OrderItemEntity orderItemEntity = orderItemMapper.dtoToEntityConvertor(orderItemDto);

@@ -19,4 +19,6 @@ public interface UserService {
 
 
     UserEntity getByUsername(UserEntity userEntity);
+
+
 }

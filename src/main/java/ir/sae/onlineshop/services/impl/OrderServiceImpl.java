@@ -35,8 +35,10 @@ public class OrderServiceImpl implements OrderService {
     }
 
     @Override
-    public void deleteById(OrderEntity orderEntity) {
-        orderRepository.deleteById(orderEntity.getId());
+    public void deleteById(OrderEntity orderEntity) throws IllegalArgumentException{
+        try {
+
+        }
 
     }
 

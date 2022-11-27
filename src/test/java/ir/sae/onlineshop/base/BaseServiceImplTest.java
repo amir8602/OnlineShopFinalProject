@@ -25,11 +25,7 @@ class BaseServiceImplTest {
 
 
 
-    @Autowired
-    private UserRepository userRepository;
 
-    @Autowired
-    private UserServiceImpl userService;
 
 
     @BeforeEach
@@ -43,12 +39,7 @@ class BaseServiceImplTest {
     @Test
     void save() {
 
-        UserEntity userEntity = new UserEntity();
-        userEntity.setUsername("sara");
-        userEntity.setPhoneNumber("09127210835");
-        UserEntity save = userRepository.save(userEntity);
-        UserEntity userEntity1 = userRepository.findById(save.getId()).orElseThrow(RuntimeException::new);
-        assertSame(save.getId(), userEntity1.getId());
+
 
     }
 

@@ -13,7 +13,7 @@ public interface OrderService {
 
     OrderEntity findById(OrderEntity orderEntity);
 
-    void deleteById(OrderEntity orderEntity);
+    void deleteById(OrderEntity orderEntity)throws IllegalArgumentException;
 
     List<OrderEntity> findByExample(OrderEntity orderEntity);
 

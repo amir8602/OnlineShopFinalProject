@@ -13,9 +13,9 @@ public class OrderItemDto extends BaseDto<Long> {
 
     @NotNull
     @Range(min = 0)
-    private int quantity;
+    private Integer quantity;
 
-    private double totalPrice;
+    private Double totalPrice;
 
     private ProductEntity productEntity;
 

@@ -18,7 +18,6 @@ public class UserEntity extends BaseEntity {
 
     @NotBlank(message = "user.firstname.not.blank")
     @Size(min = 3 , max = 20 , message = "user.firstname.invalid.size")
-
     @Column(name = "FIRST_NAME")
     private String firstName;
 

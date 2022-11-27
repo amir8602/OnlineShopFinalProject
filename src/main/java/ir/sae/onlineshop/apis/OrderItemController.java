@@ -20,15 +20,12 @@ public class OrderItemController {
 //        <OrderItemDto,Long, OrderItemEntity, OrderItemMapper, OrderItemServiceImpl> {
 
 
-  @Autowired
-  OrderItemService orderItemService;
+    @Autowired
+    OrderItemService orderItemService;
 
 
-
-  @Autowired
-  OrderItemMapper orderItemMapper;
-
-
+    @Autowired
+    OrderItemMapper orderItemMapper;
 
 
     @PostMapping
@@ -45,7 +42,7 @@ public class OrderItemController {
     public OrderItemDto getOrderItemById(@PathVariable("id") Long id) {
         OrderItemEntity orderItemEntity = new OrderItemEntity(id);
         OrderItemEntity orderItemById = orderItemService.getOrderItemById(orderItemEntity);
-         OrderItemDto getOrderItemDto = orderItemMapper.entityToDtoConvertor(orderItemById);
+        OrderItemDto getOrderItemDto = orderItemMapper.entityToDtoConvertor(orderItemById);
         return getOrderItemDto;
     }
 
@@ -74,29 +71,20 @@ public class OrderItemController {
         OrderItemEntity orderItemEntity = new OrderItemEntity(id);
 
 
-            orderItemService.deleteOrderItem(orderItemEntity.getId());
+        orderItemService.deleteOrderItem(orderItemEntity.getId());
 
     }
 
     @DeleteMapping
     @PreAuthorize("hasRole('ADMIN') or hasRole('USER')")
-    public String deleteAllOrderItem(@RequestBody OrderItemDto orderItemDto) {
+    public void deleteAllOrderItem(@RequestBody OrderItemDto orderItemDto) {
 
         OrderItemEntity orderItemEntity = orderItemMapper.dtoToEntityConvertor(orderItemDto);
-        try {
-            orderItemService.deleteAllOrderItem(orderItemEntity);
-        } catch (Exception e) {
-            return "orderItem is not found!";
-        }
-        return "orderItem remove of order Successfully!";
+
+        orderItemService.deleteAllOrderItem(orderItemEntity);
+
+
     }
-
-//    @GetMapping("/get-yeksan-nabayad-dashte-bashim")
-//    @PreAuthorize("hasRole('ADMIN')")
-//    public OrderItemDto findAllOrderItemByOrder(@RequestBody OrderDto orderDto) {
-//        return null;
-//    }
-
 
 
 }

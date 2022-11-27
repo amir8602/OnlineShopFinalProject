@@ -4,6 +4,7 @@ import ir.sae.onlineshop.base.BaseEntity;
 import ir.sae.onlineshop.enums.OrderStatus;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.util.List;
 
 
@@ -19,7 +20,7 @@ public class OrderEntity extends BaseEntity {
 
 
     @Column(name ="COST")
-    private double grandTotal;
+    private Double grandTotal;
 
 
     @OneToOne
@@ -32,10 +33,11 @@ public class OrderEntity extends BaseEntity {
 
     @Enumerated(EnumType.STRING)
     @Column(name = "ORDER_STATUS")
+    @NotNull
     private OrderStatus orderStatus;
 
 
-    public OrderEntity(double grandTotal, UserEntity user, List<OrderItemEntity> orderItem, OrderStatus orderStatus) {
+    public OrderEntity(Double grandTotal, UserEntity user, List<OrderItemEntity> orderItem, OrderStatus orderStatus) {
         this.grandTotal = grandTotal;
         this.user = user;
         this.orderItem = orderItem;
@@ -46,7 +48,7 @@ public class OrderEntity extends BaseEntity {
         this.id = id;
     }
 
-    public OrderEntity(Long id, double grandTotal, UserEntity user, List<OrderItemEntity> orderItem, OrderStatus orderStatus) {
+    public OrderEntity(Long id,Double grandTotal, UserEntity user, List<OrderItemEntity> orderItem, OrderStatus orderStatus) {
         this.id = id;
         this.grandTotal = grandTotal;
         this.user = user;

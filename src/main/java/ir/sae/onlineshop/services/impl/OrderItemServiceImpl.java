@@ -1,6 +1,7 @@
 package ir.sae.onlineshop.services.impl;
 
 
+import ir.sae.onlineshop.base.BaseServiceImpl;
 import ir.sae.onlineshop.entities.OrderItemEntity;
 import ir.sae.onlineshop.repositories.OrderItemRepository;
 import ir.sae.onlineshop.repositories.OrderRepository;
@@ -11,11 +12,18 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class OrderItemServiceImpl implements OrderItemService {
+public class OrderItemServiceImpl extends
+        BaseServiceImpl<OrderItemRepository,OrderItemEntity,Long>
+        implements OrderItemService {
     @Autowired
     OrderItemRepository orderItemRepository;
     @Autowired
     OrderRepository orderRepository;
+
+    public OrderItemServiceImpl(OrderItemRepository repository) {
+        super(repository);
+    }
+
 
     @Override
     public OrderItemEntity saveOrderItem(OrderItemEntity orderItemEntity) {

@@ -41,7 +41,7 @@ public class ProductRestController{
         ProductDto productDto1 = productMapper.entityToDtoConvertor(productEntity1);
         productDto1.setFileId(productDto.getFileId());
         return productDto1;
-        //return productMapper.entityToModel(productService.saveProduct());
+
     }
 
     @PreAuthorize("hasRole('USER') or hasRole('ADMIN')")

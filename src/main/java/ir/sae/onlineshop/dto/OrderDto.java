@@ -4,6 +4,8 @@ package ir.sae.onlineshop.dto;
 import ir.sae.onlineshop.base.BaseDto;
 import ir.sae.onlineshop.enums.OrderStatus;
 
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.validation.constraints.NotNull;
 import java.util.Date;
 import java.util.List;
@@ -22,6 +24,7 @@ public class OrderDto extends BaseDto<Long> {
 
 
     @NotNull
+    @Enumerated(EnumType.STRING)
     private OrderStatus orderStatus;
 
 

@@ -21,11 +21,11 @@ public class OrderItemEntity extends BaseEntity {
     @Column(name ="COUNT")
     @NotNull
     @Range(min = 0)
-    private int quantity;
+    private Integer quantity;
 
 
     @Column(name ="PRICE")
-    private double totalPrice;
+    private Double totalPrice;
 
 
     @ManyToOne

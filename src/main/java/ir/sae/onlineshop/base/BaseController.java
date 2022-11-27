@@ -1,7 +1,6 @@
 package ir.sae.onlineshop.base;
 
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
@@ -18,7 +17,7 @@ public class BaseController<D extends BaseDto<T>, T, E extends BaseEntity,
     private M mapper;
 
 
-    @Transactional
+
     @PostMapping
     public D save(@Valid @RequestBody D d) {
         E e = mapper.dtoToEntityConvertor(d);
@@ -28,7 +27,7 @@ public class BaseController<D extends BaseDto<T>, T, E extends BaseEntity,
 
     }
 
-    @Transactional
+
     @PutMapping
     public D update(@Valid @RequestBody D d) {
         E e = mapper.dtoToEntityConvertor(d);

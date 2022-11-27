@@ -1,6 +1,8 @@
 package ir.sae.onlineshop.apis;
 
 
+import ir.sae.onlineshop.configs.security.controllers.AuthController;
+import ir.sae.onlineshop.configs.security.payload.request.SignupRequest;
 import ir.sae.onlineshop.dto.UserDto;
 import ir.sae.onlineshop.entities.UserEntity;
 import ir.sae.onlineshop.exceptions.BaseException;
@@ -24,11 +26,22 @@ public class UserRestController {
     @Autowired
     private UserMapper userMapper;
 
+    @Autowired
+    private AuthController authController;
+
+
+
+
 
     @PostMapping
     @PreAuthorize("hasRole('USER') or hasRole('ADMIN')")
     public UserDto saveUser(@RequestBody @Valid UserDto userDto) {
+        SignupRequest signupRequest = new SignupRequest();
+        signupRequest.setEmail(userDto.getEmail());
+        signupRequest.setUsername(userDto.getUsername());
+        signupRequest.setPassword(userDto.getPassword());
         UserEntity userEntity = userMapper.dtoToEntityConvertor(userDto);
+        authController.registerUser(signupRequest);
         UserEntity saveUserEntity = userService.saveUser(userEntity);
         UserDto saveUserDto = userMapper.entityToDtoConvertor(saveUserEntity);
         return saveUserDto;

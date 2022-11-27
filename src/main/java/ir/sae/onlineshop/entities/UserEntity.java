@@ -54,7 +54,7 @@ public class UserEntity extends BaseEntity {
     @Column(name = "STATUS")
     private UserStatus status;
 
-    @OneToOne(mappedBy = "user")
+    @OneToOne(mappedBy = "user",cascade = CascadeType.PERSIST)
     private OrderEntity order;
 
     @Column(name = "USERNAME")

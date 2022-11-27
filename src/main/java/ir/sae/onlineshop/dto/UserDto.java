@@ -46,7 +46,10 @@ public class UserDto extends BaseDto<Long> {
     @Size(min = 4, max = 12, message = "user.user.name.invalid.size")
     private String username;
 
-    private Long version;
+    @NotBlank
+    @Size(min = 6, max = 40)
+    private String password;
+
 
     public OrderDto getOrderDto() {
         return orderDto;
@@ -56,13 +59,6 @@ public class UserDto extends BaseDto<Long> {
         this.orderDto = orderDto;
     }
 
-    public Long getVersion() {
-        return version;
-    }
-
-    public void setVersion(Long version) {
-        this.version = version;
-    }
 
     public String getFirstName() {
         return firstName;
@@ -128,7 +124,13 @@ public class UserDto extends BaseDto<Long> {
         this.orderDto = orderDto;
     }
 
-    public UserDto(Long id, String firstName, String lastName, String nationalCode, Date birthDate, String email, String phoneNumber, OrderDto orderDto, UserStatus status, String username) {
+
+
+
+    public UserDto() {
+    }
+
+    public UserDto(Long id, String firstName, String lastName, String nationalCode, Date birthDate, String email, String phoneNumber, OrderDto orderDto, UserStatus status, String username, String password) {
         super(id);
         this.firstName = firstName;
         this.lastName = lastName;
@@ -139,14 +141,10 @@ public class UserDto extends BaseDto<Long> {
         this.orderDto = orderDto;
         this.status = status;
         this.username = username;
+        this.password = password;
     }
 
-
-    public UserDto() {
-    }
-
-
-    public UserDto(String firstName, String lastName, String nationalCode, Date birthDate, String email, String phoneNumber, OrderDto orderDto, UserStatus status, String username) {
+    public UserDto(String firstName, String lastName, String nationalCode, Date birthDate, String email, String phoneNumber, OrderDto orderDto, UserStatus status, String username, String password) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.nationalCode = nationalCode;
@@ -156,6 +154,15 @@ public class UserDto extends BaseDto<Long> {
         this.orderDto = orderDto;
         this.status = status;
         this.username = username;
+        this.password = password;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     public String getUsername() {

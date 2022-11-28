@@ -13,43 +13,12 @@ import org.springframework.transaction.annotation.Transactional;
 public class UserServiceImpl extends BaseServiceImpl<UserEntity,
         Long, UserRepository> implements UserService {
 
-
     @Autowired
     UserRepository userRepository;
 
+    @Transactional
     public UserEntity findByUsername(UserEntity userEntity) {
         return userRepository.findByUsername(userEntity.getUsername());
     }
-
-
-//    @Override
-//    @Transactional
-//    public UserEntity saveUser(UserEntity userEntity) {
-//        return userRepository.save(userEntity);
-//    }
-//
-//    @Override
-//    public List<UserEntity> getAllUser() {
-//        return userRepository.findAll();
-//    }
-//
-//    @Override
-//    public UserEntity getUserById(UserEntity userEntity) {
-//        return userRepository.findById(userEntity.getId()).get();
-//    }
-//
-//    @Override
-//    @Transactional
-//    public UserEntity updateUser(UserEntity userEntity) {
-//
-//        return userRepository.save(userEntity);
-//    }
-//
-//    @Override
-//    public void deleteUser(Long id) {
-//        userRepository.deleteById(id);
-//
-//    }
-
 
 }

@@ -81,9 +81,10 @@ public class UserBuilder {
     {
         return new UserBuilder();
     }
-    public UserBuilder() {
 
+    public UserBuilder() {
     }
+
     public UserEntity build()
     {
         return new UserEntity(this.toString());

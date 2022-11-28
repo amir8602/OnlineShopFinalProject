@@ -2,6 +2,7 @@ package ir.sae.onlineshop.entities;
 
 
 import ir.sae.onlineshop.base.BaseEntity;
+import ir.sae.onlineshop.dto.IsNotNull2;
 import ir.sae.onlineshop.image.FileDB;
 import org.hibernate.validator.constraints.Range;
 
@@ -23,19 +24,19 @@ public class ProductEntity extends BaseEntity {
     private Long id;
 
     @Column(name = "PRODUCT_NAME")
-    @NotBlank(message = "user.product.name.not.blank")
-    @Size(min = 3 , max = 12 , message = "user.product.name.invalid.size")
+    @NotBlank(message = "user.product.name.not.blank" , groups = IsNotNull2.class)
+    @Size(min = 3 , max = 12 , message = "user.product.name.invalid.size" , groups = IsNotNull2.class)
     private String productName;
 
     @Column(name = "PRICE")
-    @NotNull
-    @Range(min = 0)
+    @NotNull(groups = IsNotNull2.class)
+    @Range(min = 0 , groups = IsNotNull2.class)
     private BigDecimal productPrice;
 
 
     @Column(name ="COUNT")
-    @NotNull
-    @Range(min = 0)
+    @NotNull(groups = IsNotNull2.class)
+    @Range(min = 0 , groups = IsNotNull2.class)
     private Integer unitInStock;
 
 

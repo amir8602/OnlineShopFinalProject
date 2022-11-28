@@ -27,7 +27,7 @@ public class OrderEntity extends BaseEntity {
     private UserEntity user;
 
 
-    @OneToMany(mappedBy = "order")
+    @OneToMany(mappedBy = "order" , cascade = CascadeType.ALL)
     List<OrderItemEntity> orderItem;
 
 
@@ -41,6 +41,21 @@ public class OrderEntity extends BaseEntity {
         this.grandTotal = grandTotal;
         this.user = user;
         this.orderItem = orderItem;
+        this.orderStatus = orderStatus;
+    }
+
+    public OrderEntity(OrderStatus orderStatus) {
+        this.orderStatus = orderStatus;
+    }
+
+    public OrderEntity(UserEntity user, OrderStatus orderStatus) {
+        this.user = user;
+        this.orderStatus = orderStatus;
+    }
+
+    public OrderEntity(Double grandTotal, UserEntity user, OrderStatus orderStatus) {
+        this.grandTotal = grandTotal;
+        this.user = user;
         this.orderStatus = orderStatus;
     }
 

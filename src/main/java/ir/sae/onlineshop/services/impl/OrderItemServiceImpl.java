@@ -19,33 +19,4 @@ public class OrderItemServiceImpl extends BaseServiceImpl<OrderItemEntity,
     @Autowired
     OrderRepository orderRepository;
 
-
-
-
-    //    @Override
-//    public OrderItemEntity saveOrderItem(OrderItemEntity orderItemEntity) {
-//        return orderItemRepository.save(orderItemEntity);
-//    }
-//
-//    @Override
-//    public OrderItemEntity getOrderItemById(OrderItemEntity orderItemEntity) {
-//        return orderItemRepository.findById(orderItemEntity.getId()).get();
-//    }
-//
-//    @Override
-//    public OrderItemEntity updateOrderItem(OrderItemEntity orderItemEntity) {
-//        return orderItemRepository.save(orderItemEntity);
-//    }
-//
-//    @Override
-//    public void deleteOrderItem(Long id) {
-//        orderItemRepository.deleteById(id);
-//
-//    }
-//    @Override
-//    public List<OrderItemEntity> getAll() {
-//        return orderItemRepository.findAll();
-//    }
-
-
 }

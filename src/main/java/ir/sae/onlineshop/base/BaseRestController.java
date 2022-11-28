@@ -1,10 +1,8 @@
 package ir.sae.onlineshop.base;
 
-import ir.sae.onlineshop.dto.IsNotNull2;
 import ir.sae.onlineshop.exceptions.BaseException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
-import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
@@ -33,7 +31,7 @@ public abstract class BaseRestController<D extends BaseDto,
 
 
     @PostMapping("/find")
-    public ResponseEntity<List<D>> findAll(@RequestBody @Validated(IsNotNull2.class) D d) throws BaseException {
+    public ResponseEntity<List<D>> findAll(@RequestBody D d) throws BaseException {
          return ResponseEntity.ok(mapper.entityToDtoConvertor(service.findAll(mapper.dtoToEntityConvertor(d))));
     }
 

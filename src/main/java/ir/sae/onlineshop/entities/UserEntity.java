@@ -2,6 +2,7 @@ package ir.sae.onlineshop.entities;
 
 
 import ir.sae.onlineshop.base.BaseEntity;
+import ir.sae.onlineshop.dto.IsNotNull2;
 import ir.sae.onlineshop.enums.UserStatus;
 
 import javax.persistence.*;
@@ -16,49 +17,49 @@ public class UserEntity extends BaseEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @NotBlank(message = "user.firstname.not.blank" )
-    @Size(min = 3 , max = 20 , message = "user.firstname.invalid.size")
+    @NotBlank(message = "user.firstname.not.blank" ,groups = IsNotNull2.class )
+    @Size(min = 3 , max = 20 , message = "user.firstname.invalid.size" , groups = IsNotNull2.class)
     @Column(name = "FIRST_NAME")
     private String firstName;
 
 
-    @NotBlank(message = "user.lastname.not.blank" )
-    @Size(min = 3 , max = 20 , message = "user.lastname.invalid.size")
-    @NotEmpty
+    @NotBlank(message = "user.lastname.not.blank" , groups = IsNotNull2.class )
+    @Size(min = 3 , max = 20 , message = "user.lastname.invalid.size" , groups = IsNotNull2.class)
+    @NotEmpty(groups = IsNotNull2.class)
     @Column(name = "LAST_NAME")
     private String lastName;
 
     @Column(name = "NATIONAL_CODE")
-    @NotBlank(message = "user.national.code.not.blank")
-    @Size(min = 10 , max = 10 , message = "user.national.code.invalid.size")
+    @NotBlank(message = "user.national.code.not.blank" , groups = IsNotNull2.class)
+    @Size(min = 10 , max = 10 , message = "user.national.code.invalid.size" , groups = IsNotNull2.class)
     private String nationalCode;
 
     @Column(name = "BIRTH_DATE")
-    @NotNull(message = "user.birthdate.not.null" )
+    @NotNull(message = "user.birthdate.not.null" , groups = IsNotNull2.class )
     private Date birthDate;
 
 
-    @Email(message = "user.email.invalid.format")
-    @NotBlank(message = "user.email.not.blank")
+    @Email(message = "user.email.invalid.format" , groups = IsNotNull2.class)
+    @NotBlank(message = "user.email.not.blank" , groups = IsNotNull2.class)
     @Column(name = "EMAIL")
     private String email;
 
 
     @Column(name = "PHONE_NUMBER")
-    @NotBlank(message = "user.phone.number.not.blank")
-    @Size(min =11, max = 11 , message = "user.phone.number.invalid.size")
+    @NotBlank(message = "user.phone.number.not.blank" , groups = IsNotNull2.class)
+    @Size(min =11, max = 11 , message = "user.phone.number.invalid.size" , groups = IsNotNull2.class)
     private String phoneNumber;
 
-    @NotNull
+    @NotNull(groups = IsNotNull2.class)
     @Column(name = "STATUS")
     @Enumerated(EnumType.STRING)
     private UserStatus status;
 
-    @OneToOne(mappedBy = "user")
+    @OneToOne(mappedBy = "user"  , cascade = CascadeType.ALL)
     private OrderEntity order;
 
     @Column(name = "USERNAME")
-    @NotBlank(message = "user.user.name.not.blank")
+    @NotBlank(message = "user.user.name.not.blank" , groups = IsNotNull2.class)
     @Size(min =4, max = 12 , message = "user.user.name.invalid.size")
     private String username;
 

@@ -2,6 +2,7 @@ package ir.sae.onlineshop.entities;
 
 
 import ir.sae.onlineshop.base.BaseEntity;
+import ir.sae.onlineshop.dto.IsNotNull2;
 import org.hibernate.validator.constraints.Range;
 
 import javax.persistence.*;
@@ -19,8 +20,8 @@ public class OrderItemEntity extends BaseEntity {
 
 
     @Column(name ="COUNT")
-    @NotNull
-    @Range(min = 0)
+    @NotNull(groups = IsNotNull2.class)
+    @Range(min = 0,groups = IsNotNull2.class)
     private Integer quantity;
 
 

@@ -1,6 +1,6 @@
 package ir.sae.onlineshop.exceptions;
 
-public class BaseException extends Exception{
+public class BaseException extends RuntimeException{
 
     private final String exceptionType;
 

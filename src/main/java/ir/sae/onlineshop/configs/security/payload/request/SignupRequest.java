@@ -49,7 +49,7 @@ public class  SignupRequest {
     return this.role;
   }
 
-  public void setRole(Set<String> role) {
-    this.role = role;
+  public void setRole() {
+    this.role.add("ROLE_USER");
   }
 }

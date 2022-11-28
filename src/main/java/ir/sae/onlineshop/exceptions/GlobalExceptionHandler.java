@@ -32,29 +32,4 @@ public class GlobalExceptionHandler {
     public String handleBaseExceptions(BaseException e){
         return e.getMessage();
     }
-
-
-//    //ConstraintViolationException
-//
-//    @ExceptionHandler(ConstraintViolationException.class)
-//    @ResponseStatus(HttpStatus.BAD_REQUEST)
-//    public Map<String, String> handleValidationExceptionsEntity(ConstraintViolationException ex) {
-//        Map<String, String> errors = new HashMap<>();
-//        ex.getBindingResult().getAllErrors().forEach((error) -> {
-//            String fieldName = ((FieldError) error).getField();
-//            String errorMessage = error.getDefaultMessage();
-//            errors.put(fieldName, errorMessage);
-//        });
-//        return errors;
-//    }
-
-
-//    @ExceptionHandler()
-//    public  void ex(){
-//
-//    }
-
-
-
-
 }

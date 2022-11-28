@@ -16,13 +16,13 @@ public class UserEntity extends BaseEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @NotBlank(message = "user.firstname.not.blank")
+    @NotBlank(message = "user.firstname.not.blank" )
     @Size(min = 3 , max = 20 , message = "user.firstname.invalid.size")
     @Column(name = "FIRST_NAME")
     private String firstName;
 
 
-    @NotBlank(message = "user.lastname.not.blank")
+    @NotBlank(message = "user.lastname.not.blank" )
     @Size(min = 3 , max = 20 , message = "user.lastname.invalid.size")
     @NotEmpty
     @Column(name = "LAST_NAME")
@@ -34,7 +34,7 @@ public class UserEntity extends BaseEntity {
     private String nationalCode;
 
     @Column(name = "BIRTH_DATE")
-    @NotNull(message = "user.birthdate.not.null")
+    @NotNull(message = "user.birthdate.not.null" )
     private Date birthDate;
 
 
@@ -51,6 +51,7 @@ public class UserEntity extends BaseEntity {
 
     @NotNull
     @Column(name = "STATUS")
+    @Enumerated(EnumType.STRING)
     private UserStatus status;
 
     @OneToOne(mappedBy = "user")
@@ -165,25 +166,11 @@ public class UserEntity extends BaseEntity {
         this.nationalCode = nationalCode;
         this.birthDate = birthDate;
         this.email = email;
-//        this.phoneNumber = phoneNumber;
+        this.phoneNumber = phoneNumber;
         this.status = status;
         this.order = order;
         this.username = username;
     }
 
-    @Override
-    public String toString() {
-        return "UserEntity{" +
-                "id=" + id +
-                ", firstName='" + firstName + '\'' +
-                ", lastName='" + lastName + '\'' +
-                ", nationalCode='" + nationalCode + '\'' +
-                ", birthDate=" + birthDate +
-                ", email='" + email + '\'' +
-//                ", phoneNumber='" + phoneNumber + '\'' +
-                ", status=" + status +
-                ", order=" + order +
-                ", username='" + username + '\'' +
-                '}';
-    }
+
 }

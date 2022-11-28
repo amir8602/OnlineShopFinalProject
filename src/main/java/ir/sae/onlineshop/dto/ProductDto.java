@@ -2,18 +2,18 @@ package ir.sae.onlineshop.dto;
 
 import ir.sae.onlineshop.base.BaseDto;
 import ir.sae.onlineshop.entities.OrderItemEntity;
+import lombok.RequiredArgsConstructor;
 import org.hibernate.validator.constraints.Range;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.math.BigDecimal;
+import java.util.Date;
 import java.util.List;
 
-
+@RequiredArgsConstructor
 public class ProductDto extends BaseDto {
-
-
 
     @NotBlank(message = "user.product.name.not.blank")
     @Size(min = 3 , max = 12 , message = "user.product.name.invalid.size")
@@ -31,21 +31,10 @@ public class ProductDto extends BaseDto {
 
     private Long fileId;
 
-
-
-    public ProductDto() {
-
+    public ProductDto(Integer version, Date createDate, Date updateDate) {
+        super(version, createDate, updateDate);
     }
 
-
-
-    public ProductDto(String productName, BigDecimal productPrice, Integer unitInStock, List<OrderItemEntity> orderItemEntityList, Long fileId) {
-        this.productName = productName;
-        this.productPrice = productPrice;
-        this.unitInStock = unitInStock;
-        this.orderItemList = orderItemList;
-        this.fileId = fileId;
-    }
 
     public String getProductName() {
         return productName;

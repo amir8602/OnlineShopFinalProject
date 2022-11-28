@@ -9,6 +9,8 @@ public class BaseException extends Exception{
         this.exceptionType = exceptionType;
     }
 
+
+
     public BaseException(String message, String exceptionType) {
         super(message);
         this.exceptionType = exceptionType;

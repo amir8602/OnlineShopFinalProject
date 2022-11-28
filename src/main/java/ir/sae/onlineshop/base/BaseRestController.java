@@ -1,5 +1,6 @@
 package ir.sae.onlineshop.base;
 
+import ir.sae.onlineshop.dto.IsNotNull2;
 import ir.sae.onlineshop.exceptions.BaseException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -21,46 +22,24 @@ public abstract class BaseRestController<D extends BaseDto,
     protected final M mapper;
 
     @PostMapping
-    public ResponseEntity<D> add(@Validated
-                                     @RequestBody D d) throws BaseException {
-        E e = mapper.dtoToEntityConvertor(d);
-        return ResponseEntity.ok(
-                mapper.entityToDtoConvertor(
-                        service.save(e)
-                )
-        );
+    public ResponseEntity<D> add(@Valid @RequestBody D d) throws BaseException {
+        return ResponseEntity.ok(mapper.entityToDtoConvertor(service.saveOrUpdate(mapper.dtoToEntityConvertor(d))));
     }
 
     @PutMapping
     public ResponseEntity<D> update(@Valid @RequestBody D d) throws BaseException {
-        E e = mapper.dtoToEntityConvertor(d);
-        return ResponseEntity.ok(
-                mapper.entityToDtoConvertor(
-                        service.save(e)
-                )
-        );
+        return ResponseEntity.ok(mapper.entityToDtoConvertor(service.saveOrUpdate(mapper.dtoToEntityConvertor(d))));
     }
 
-    @GetMapping("/{id}")
-    public ResponseEntity<D> findById(@PathVariable ID id) throws BaseException {
-        return ResponseEntity.ok(
-                mapper.entityToDtoConvertor(
-                        service.findById(id)
-                )
-        );
+
+    @PostMapping("/find")
+    public ResponseEntity<List<D>> findAll(@RequestBody @Validated(IsNotNull2.class) D d) throws BaseException {
+         return ResponseEntity.ok(mapper.entityToDtoConvertor(service.findAll(mapper.dtoToEntityConvertor(d))));
     }
 
     @DeleteMapping("/{id}")
     public void deleteById(@PathVariable ID id) throws BaseException {
-        service.findById(id);
         service.deleteById(id);
     }
 
-    @GetMapping
-    public ResponseEntity<List<D>> findAll() throws BaseException {
-        List<E> all = service.findAll();
-        return ResponseEntity.ok(
-                mapper.entityToDtoConvertor(all)
-        );
-    }
 }

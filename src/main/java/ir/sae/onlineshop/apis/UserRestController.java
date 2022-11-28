@@ -1,6 +1,5 @@
 package ir.sae.onlineshop.apis;
 
-
 import ir.sae.onlineshop.base.BaseRestController;
 import ir.sae.onlineshop.dto.UserDto;
 import ir.sae.onlineshop.entities.UserEntity;
@@ -34,57 +33,7 @@ public class UserRestController extends BaseRestController<
         UserEntity userEntity = new UserEntity();
         userEntity.setUsername(username);
         UserEntity find=userService.findByUsername(userEntity);
-        UserDto userDto = userMapper.entityToDtoConvertor(find);
-        return userDto;
+        return userMapper.entityToDtoConvertor(find);
     }
-
-//        @PostMapping
-//    public UserDto saveUser(@RequestBody @Valid UserDto userDto) {
-//        UserEntity userEntity = userMapper.dtoToEntityConvertor(userDto);
-//        UserEntity saveUserEntity = userService.saveUser(userEntity);
-//        UserDto saveUserDto = userMapper.entityToDtoConvertor(saveUserEntity);
-//        return saveUserDto;
-//    }
-//
-//    @GetMapping
-//    public List<UserDto> getAllUser() {
-//
-//        List<UserEntity> getAllUser = userService.getAllUser();
-//        List<UserDto> userDtos = userMapper.entityToDtoConvertor(getAllUser);
-//        return userDtos;
-//
-//
-//    }
-//
-//    @GetMapping("/{id}")
-//    public UserDto getUserById(@PathVariable("id") Long id) {
-//        UserEntity userEntity = new UserEntity(id);
-//        UserEntity getUserById = userService.getUserById(userEntity);
-//        UserDto userDto = userMapper.entityToDtoConvertor(getUserById);
-//        return userDto;
-//    }
-//
-//
-//    @PutMapping
-//    public UserDto updateUser(@RequestBody UserDto userDto) {
-//        UserEntity userEntity = userMapper.dtoToEntityConvertor(userDto);
-//        UserEntity user = new UserEntity(userDto.getId());
-//        UserEntity userById = userService.getUserById(user);
-//        userEntity.setVersion(userById.getVersion());
-//        userEntity.setCreateDate(userById.getCreateDate());
-//        UserEntity saveUserEntity = userService.updateUser(userEntity);
-//        UserDto saveUserDto = userMapper.entityToDtoConvertor(saveUserEntity);
-//        return saveUserDto;
-//    }
-//
-//
-//    @DeleteMapping("/{id}")
-//    public void deleteUserById(@PathVariable("id") Long id) {
-//        UserEntity userEntity = new UserEntity(id);
-//
-//
-//        userService.deleteUser(userEntity.getId());
-//    }
-
 
 }

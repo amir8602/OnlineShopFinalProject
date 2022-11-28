@@ -3,6 +3,7 @@ package ir.sae.onlineshop.dto;
 
 import ir.sae.onlineshop.base.BaseDto;
 import ir.sae.onlineshop.enums.UserStatus;
+import lombok.*;
 
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
@@ -10,6 +11,11 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.util.Date;
 
+
+@Setter
+@Getter
+@AllArgsConstructor
+@NoArgsConstructor
 public class UserDto extends BaseDto {
 
 
@@ -46,118 +52,4 @@ public class UserDto extends BaseDto {
     @Size(min = 4, max = 12, message = "user.user.name.invalid.size")
     private String username;
 
-    private Long version;
-
-
-    public OrderDto getOrder() {
-        return order;
-    }
-
-    public void setOrder(OrderDto order) {
-        this.order = order;
-    }
-
-
-    public void setVersion(Long version) {
-        this.version = version;
-    }
-
-    public String getFirstName() {
-        return firstName;
-    }
-
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
-    }
-
-    public String getLastName() {
-        return lastName;
-    }
-
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
-    }
-
-    public String getNationalCode() {
-        return nationalCode;
-    }
-
-    public void setNationalCode(String nationalCode) {
-        this.nationalCode = nationalCode;
-    }
-
-    public Date getBirthDate() {
-        return birthDate;
-    }
-
-    public void setBirthDate(Date birthDate) {
-        this.birthDate = birthDate;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public String getPhoneNumber() {
-        return phoneNumber;
-    }
-
-    public void setPhoneNumber(String phoneNumber) {
-        this.phoneNumber = phoneNumber;
-    }
-
-    public UserStatus getStatus() {
-        return status;
-    }
-
-    public void setStatus(UserStatus status) {
-        this.status = status;
-    }
-
-
-    public UserDto(Long id, String firstName, String lastName, String nationalCode, Date birthDate, String email, String phoneNumber, OrderDto orderDto, UserStatus status, String username) {
-
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.nationalCode = nationalCode;
-        this.birthDate = birthDate;
-        this.email = email;
-        this.phoneNumber = phoneNumber;
-        this.order= order;
-        this.status = status;
-        this.username = username;
-    }
-
-
-    public UserDto() {
-    }
-
-
-    public UserDto(String firstName, String lastName, String nationalCode, Date birthDate, String email, String phoneNumber, OrderDto orderDto, UserStatus status, String username) {
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.nationalCode = nationalCode;
-        this.birthDate = birthDate;
-        this.email = email;
-        this.phoneNumber = phoneNumber;
-        this.order= order;
-        this.status = status;
-        this.username = username;
-    }
-
-    public String getUsername() {
-        return username;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
-    }
-
-    public UserDto(String username) {
-        this.username = username;
-    }
 }

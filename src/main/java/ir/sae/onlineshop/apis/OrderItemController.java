@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/order/items")
+
 public class OrderItemController extends BaseRestController<
         OrderItemDto, OrderItemEntity, OrderItemMapper, OrderItemService, Long> {
     public OrderItemController(OrderItemService service, OrderItemMapper mapper) {

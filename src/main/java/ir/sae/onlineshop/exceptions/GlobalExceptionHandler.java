@@ -6,10 +6,11 @@ import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseStatus;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.util.HashMap;
 import java.util.Map;
-
+@RestController
 @ControllerAdvice
 public class GlobalExceptionHandler {
 
@@ -24,6 +25,14 @@ public class GlobalExceptionHandler {
         });
         return errors;
     }
+
+
+    @ExceptionHandler(BaseException.class)
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    public String handleBaseExceptions(BaseException e){
+        return e.getMessage();
+    }
+
 
 //    //ConstraintViolationException
 //

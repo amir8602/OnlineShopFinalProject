@@ -10,6 +10,9 @@ public interface ProductService extends BaseService<ProductEntity, Long> {
 
     List<ProductEntity> search(Example<ProductEntity> example);
 
+
+
+
 //    ProductEntity saveProduct(ProductEntity productEntity);
 //
 //    ProductEntity getById(ProductEntity productEntity);

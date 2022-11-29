@@ -52,7 +52,8 @@ public class ProductRestController extends BaseRestController<
     @PreAuthorize("hasRole('USER') or hasRole('ADMIN')")
     @PostMapping("/search")
     public List<ProductDto> search(@RequestBody ProductDto productDto){
-        return productMapper.entityToDtoConvertor(productService.search(Example.of(productMapper.dtoToEntityConvertor(productDto))));
+        return productMapper.entityToDtoConvertor(productService.search
+                (Example.of(productMapper.dtoToEntityConvertor(productDto))));
     }
 
 

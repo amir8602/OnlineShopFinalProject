@@ -22,6 +22,10 @@ public class ProductServiceImpl  extends BaseServiceImpl<ProductEntity,
     public List<ProductEntity> search(Example<ProductEntity> example) {
         return productRepository.findAll(example);
     }
+
+
+
+
 //    @Override
 //    public ProductEntity saveProduct(ProductEntity productEntity) {
 //        return productRepository.save(productEntity);

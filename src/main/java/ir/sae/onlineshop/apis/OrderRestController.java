@@ -9,10 +9,7 @@ import ir.sae.onlineshop.mappers.OrderMapper;
 import ir.sae.onlineshop.services.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/orders")
@@ -33,8 +30,13 @@ public class OrderRestController extends BaseRestController<
     }
 
     @PostMapping("/addProduct")
-    public OrderEntity addToOrder(@RequestBody @Validated(IsNotNull.class) AddOrderDto addOrderDto){
-        return orderService.addToOrder(addOrderDto);
+    public OrderDto addToOrder(@RequestBody @Validated(IsNotNull.class) AddOrderDto addOrderDto){
+        return orderMapper.entityToDtoConvertor(orderService.addToOrder(addOrderDto));
+    }
+
+    @DeleteMapping("/deleteProduct/{id}")
+    public OrderDto deleteFromOrder(@PathVariable("id") Long id){
+        return orderMapper.entityToDtoConvertor(orderService.deleteFromOrder(id));
     }
 
 

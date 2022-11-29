@@ -1,8 +1,6 @@
 package ir.sae.onlineshop.dto;
 
 import ir.sae.onlineshop.base.BaseDto;
-import ir.sae.onlineshop.entities.OrderEntity;
-import ir.sae.onlineshop.entities.ProductEntity;
 import org.hibernate.validator.constraints.Range;
 
 import javax.validation.constraints.NotNull;
@@ -18,29 +16,29 @@ public class OrderItemDto extends BaseDto {
 
     private Double totalPrice;
 
-    private ProductEntity product;
-
-    @NotNull
-    private OrderEntity order;
+    private ProductDto product;
 
 
-    public OrderItemDto(Integer version, Date createDate, Date updateDate, Integer quantity, Double totalPrice, ProductEntity product, OrderEntity order) {
+
+
+    public OrderItemDto(Integer version, Date createDate, Date updateDate, Integer quantity, Double totalPrice, ProductDto product ) {
         super(version, createDate, updateDate);
         this.quantity = quantity;
         this.totalPrice = totalPrice;
         this.product = product;
-        this.order = order;
+
     }
 
-    public OrderItemDto(Integer quantity, Double totalPrice, ProductEntity product, OrderEntity order) {
+    public OrderItemDto(Integer quantity, Double totalPrice, ProductDto product) {
         this.quantity = quantity;
         this.totalPrice = totalPrice;
         this.product = product;
-        this.order = order;
+
     }
 
     public OrderItemDto() {
     }
+
 
 
 
@@ -68,19 +66,13 @@ public class OrderItemDto extends BaseDto {
         this.totalPrice = totalPrice;
     }
 
-    public ProductEntity getProduct() {
+    public ProductDto getProduct() {
         return product;
     }
 
-    public void setProduct(ProductEntity product) {
+    public void setProduct(ProductDto product) {
         this.product = product;
     }
 
-    public OrderEntity getOrder() {
-        return order;
-    }
 
-    public void setOrder(OrderEntity order) {
-        this.order = order;
-    }
 }

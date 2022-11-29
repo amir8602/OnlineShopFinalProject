@@ -43,7 +43,6 @@ public class UserDto extends BaseDto {
     @Size(min = 11, max = 11, message = "user.phone.number.invalid.size")
     private String phoneNumber;
 
-    private OrderDto order;
 
     @NotNull
     private UserStatus status;

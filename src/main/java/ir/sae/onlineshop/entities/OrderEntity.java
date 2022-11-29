@@ -28,7 +28,7 @@ public class OrderEntity extends BaseEntity {
 
 
     @OneToMany(mappedBy = "order" , cascade = CascadeType.ALL)
-    List<OrderItemEntity> orderItem;
+    List<OrderItemEntity> orderItems;
 
 
     @Enumerated(EnumType.STRING)
@@ -37,10 +37,10 @@ public class OrderEntity extends BaseEntity {
     private OrderStatus orderStatus;
 
 
-    public OrderEntity(Double grandTotal, UserEntity user, List<OrderItemEntity> orderItem, OrderStatus orderStatus) {
+    public OrderEntity(Double grandTotal, UserEntity user, List<OrderItemEntity> orderItems, OrderStatus orderStatus) {
         this.grandTotal = grandTotal;
         this.user = user;
-        this.orderItem = orderItem;
+        this.orderItems = orderItems;
         this.orderStatus = orderStatus;
     }
 
@@ -63,11 +63,11 @@ public class OrderEntity extends BaseEntity {
         this.id = id;
     }
 
-    public OrderEntity(Long id,Double grandTotal, UserEntity user, List<OrderItemEntity> orderItem, OrderStatus orderStatus) {
+    public OrderEntity(Long id, Double grandTotal, UserEntity user, List<OrderItemEntity> orderItems, OrderStatus orderStatus) {
         this.id = id;
         this.grandTotal = grandTotal;
         this.user = user;
-        this.orderItem = orderItem;
+        this.orderItems = orderItems;
         this.orderStatus = orderStatus;
     }
 
@@ -100,12 +100,12 @@ public class OrderEntity extends BaseEntity {
         this.user = userEntity;
     }
 
-    public List<OrderItemEntity> getOrderItem() {
-        return orderItem;
+    public List<OrderItemEntity> getOrderItems() {
+        return orderItems;
     }
 
-    public void setOrderItem(List<OrderItemEntity> orderItemEntities) {
-        this.orderItem = orderItemEntities;
+    public void setOrderItems(List<OrderItemEntity> orderItemEntities) {
+        this.orderItems = orderItemEntities;
     }
 
     public OrderStatus getOrderStatus() {

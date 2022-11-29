@@ -1,6 +1,7 @@
 package ir.sae.onlineshop.apis;
 
 import ir.sae.onlineshop.base.BaseRestController;
+import ir.sae.onlineshop.dto.IsNotNull2;
 import ir.sae.onlineshop.dto.ProductDto;
 import ir.sae.onlineshop.entities.ProductEntity;
 import ir.sae.onlineshop.exceptions.BaseException;
@@ -10,6 +11,7 @@ import ir.sae.onlineshop.mappers.ProductMapper;
 import ir.sae.onlineshop.services.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -35,7 +37,7 @@ public class ProductRestController extends BaseRestController<
 
     @Override
     @PostMapping
-    public ResponseEntity<ProductDto> add(@RequestBody ProductDto productDto) throws BaseException {
+    public ResponseEntity<ProductDto> add(@RequestBody @Validated(IsNotNull2.class) ProductDto productDto) throws BaseException {
         ProductEntity productEntity = productMapper.dtoToEntityConvertor(productDto);
         FileDB image = imageService.getFile(productDto.getFileId());
         productEntity.setFile(image);

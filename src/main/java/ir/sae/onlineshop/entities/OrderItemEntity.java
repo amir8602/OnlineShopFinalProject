@@ -55,6 +55,13 @@ public class OrderItemEntity extends BaseEntity {
         this.order = order;
     }
 
+    public OrderItemEntity(Long id, Integer quantity, Double totalPrice, ProductEntity product) {
+        this.id = id;
+        this.quantity = quantity;
+        this.totalPrice = totalPrice;
+        this.product = product;
+    }
+
     public OrderItemEntity(Long id) {
         this.id = id;
     }
